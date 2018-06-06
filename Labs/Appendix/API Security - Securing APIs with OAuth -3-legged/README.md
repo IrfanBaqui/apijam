@@ -74,11 +74,6 @@ Authorization code is one of the most commonly used OAuth 2.0 grant types. The a
 
 	![image alt text](./media/image_10.png)
 
-* Add a sample **Callback URL** that points to localhost. This is the endpoint your browser will be redirected to with the OAuth authorization code
-```
-http://localhost:8080/test
-```
-
 * Now under **Resources > API Proxy** section, click on **+ API Proxy**.
 
 	![image alt text](./media/image_11.png)
@@ -150,11 +145,21 @@ Note: You’ll have to remove the Authorization header using the Assign Message 
 
 	![image alt text](./media/image_19.png)
 
-* Select the app that you created in the *API Security : Securing APIs with API Key* lab.
+* Select the Platinum app that you created in the previous labs.
 
 	![image alt text](./media/image_20.png)
 
-* Click on the **Show** button under Consumer Key, Consumer Secret.
+* Click on **Edit**
+
+	![image alt text](./media/image_10.png)
+
+* Add a sample **Callback URL** that points to localhost. This is the endpoint your browser will be redirected to with the OAuth authorization code
+```
+http://localhost:8080/test
+```
+* Save the configuration
+
+* While still in the platinum app, Click on the **Show** button under Consumer Key, Consumer Secret.
 
 * Copy the values and store them somewhere safe.
 
