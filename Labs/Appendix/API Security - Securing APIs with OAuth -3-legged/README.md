@@ -86,7 +86,7 @@ Authorization code is one of the most commonly used OAuth 2.0 grant types. The a
 
 	![image alt text](./media/image_13.jpg)
 
-* Click on the API proxy that you created in "API Design : Create a Reverse Proxy with OpenAPI Specification" lab. 
+* Click on the Employee API proxy that you created in the previous labs.
 
 * Click on the **Develop** tab. Select **PreFlow** from the sidebar under **Proxy Endpoints** section
 
@@ -173,7 +173,7 @@ http://localhost:8080/test
 
 	Windows users, refer this [link](https://support.microsoft.com/en-us/kb/191239), or use this [link](https://www.base64encode.org/) to generate the value.
 
-* Copy the URL for oauth API proxy. 
+* Copy the URL for oauth API proxy. (Can be found by selecting the OAuth proxy and viewing the Overview tab
 
 	![image alt text](./media/image_22.png)
 
