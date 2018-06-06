@@ -66,13 +66,18 @@ Authorization code is one of the most commonly used OAuth 2.0 grant types. The a
 
   ![image alt text](./media/image_8.png)
 
-* Select the API Product that you created as a part of *API Security - Securing APIs with API Keys* lab.
+* Select the Platinum API Product that you created as a part of the previous labs.
 
 	![image alt text](./media/image_9.png)
 
 * Click on **Edit**
 
 	![image alt text](./media/image_10.png)
+
+* Add a sample **Callback URL** that points to localhost. This is the endpoint your browser will be redirected to with the OAuth authorization code
+```
+http://localhost:8080/test
+```
 
 * Now under **Resources > API Proxy** section, click on **+ API Proxy**.
 
@@ -168,16 +173,11 @@ Note: You’ll have to remove the Authorization header using the Assign Message 
 	![image alt text](./media/image_22.png)
 
 * First, you’ll obtain an Authorization code which will be exchanged to obtain the access token. To obtain an Authorization code, you’ll have to call the ```/authorize``` endpoint with your app’s client id, code response type and required scopes as query params
-
-	Query param: 
-  ```
-  response_type=code, client_id=<your app’s client id>,scope=READ,UPDATE
-  ```
   
 	The final URL will look something like this - 
   
   ```
-  http://apigeedemovideos-test.apigee.com/v1/mrk/oauth_ac/authorize?client_id=<client_id>&response_type=code&scope=READ,UPDATE
+  http://<org-name>.apigee.com/v1/<initials>/oauth_ac/authorize?client_id=<client_id>&response_type=code&scope=READ,UPDATE
   ```
 
 * Make a call to this URL from your browser, it will then redirect you to a login page which will look like this.
