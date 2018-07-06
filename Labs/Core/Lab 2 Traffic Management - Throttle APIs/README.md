@@ -1,12 +1,13 @@
-# Traffic Management : Throttle APIs 
+# Security : Throttle APIs
 
-*Duration : 20 mins*
+*Duration : 10 mins*
 
 *Persona : API Team / Security*
 
 # Use case
 
-You have a requirement to protect your target servers (backend) from traffic spikes. You would like to protect your APIs from denial of service attacks that might lead to performance lags or downtime of your backend.
+You have a requirement to create a reverse proxy for taking requests from the Internet and forward them to an existing service. You have decided to follow a design first approach & built a reusable component, a specification which can be used to build API Proxies, generate API documentation, generate API test cases using OpenAPI Specification format. You would like to generate an Apigee API Proxy by using the OpenAPI Specification (Swagger) instead of building the API Proxy from scratch.
+Also, you have an additional requirement to protect your target servers (backend) from traffic spikes. You would like to protect your APIs from denial of service attacks that might lead to performance lags or downtime of your backend.
 
 # How can Apigee Edge help?
 
@@ -16,39 +17,137 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 # Pre-requisites
 
-Apigee Edge API Proxy created in earlier lab exercise. If not, jump back to "API Design - Create a Reverse Proxy with OpenAPI specification" lab.
+* Basic understanding of [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification) (Swagger)
+* Completed a previous [Virtual API Jam](https://github.com/rmistry75/devjam3/tree/master/Labs/VirtualAPIJam) or have the equivalent knowledge
 
 # Instructions
 
 1. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
 
-2. Select **Develop → API Proxies** in the side navigation menu.
+2. Select **Develop → Specs** in the side navigation menu
 
-![image alt text](./media/image_2.jpg)
+![image alt text](./media/image_0.png)
 
-3. Click on **{your_initials}**_employee_proxy that you have created in earlier lab exercise.
+3. Click **+Spec.** Click on **Import URL** to add a new spec from existing source.
+
+![image alt text](./media/image_1.png)
+
+4. Enter spec details. Replace **{your-initials}** with the initials of your name.
+
+   * File Name: **{your-initials}**_employee_api_spec
+
+   * URL: [http://playground.apistudio.io/070cde0a-44f7-4e2c-8085-6e1020db7baf/spec](http://playground.apistudio.io/070cde0a-44f7-4e2c-8085-6e1020db7baf/spec)
+
+![image alt text](./media/image_2.png)
+
+5. Verify the values and click **Import**. Spec has been imported into Apigee Edge & Ready to use. You should see your spec in the list. For example,
 
 ![image alt text](./media/image_3.png)
 
-4. Click on **Develop** tab to access API Proxy development dashboard.
+6. Click on **{your-initials}**_employee_api_spec from the list to access Open API spec editor & interactive documentation that lists API details & API Resources.
+
+![image alt text](./media/image_4.png)
+
+## Create an API Proxy
+
+1. It’s time to create Apigee API Proxy from Open API Specification. Click on **Develop → API Proxies** from side navigation menu.
+
+![image alt text](./media/image_5.jpg)
+
+2. Click **+Proxy** The Build a Proxy wizard is invoked. 
+
+![image alt text](./media/image_6.jpg)
+
+3. Select **Reverse proxy**, Click on **Use OpenAPI** below reverse proxy option.
+
+![image alt text](./media/image_7.png)
+
+4. You should see a popup with list of Specs. Select **{your-initials}**_employee_api_spec and click **Select.** 
+
+![image alt text](./media/image_8.png)
+
+5. You can see the selected OpenAPI Spec URL below the Reverse Proxy option, Click **Next** to continue.
+
+![image alt text](./media/image_9.png)
+
+6. Enter details in the proxy wizard. Replace **{your-initials}** with the initials of your name. 
+
+    * Proxy Name: **{your_initials}**_employee_proxy
+
+    * Proxy Base Path: /v1/**{your_initials}**_employee_proxy
+
+    * Existing API: Observe the field value which is auto filled from OpenAPI Spec.
+
+![image alt text](./media/image_10.png)
+
+7. Verify the values and click **Next**.
+
+8. You can select, de-select list of API Proxy Resources that are pre-filled from OpenAPI Spec. Select all & Click on **Next**
+
+![image alt text](./media/image_11.png)
+
+9. Select **Pass through (none)** for the authorization in order to choose not to apply any security policy for the proxy. Click Next. 
+
+![image alt text](./media/image_12.jpg)
+
+10. Go with the **default Virtual Host** configuration.
+
+![image alt text](./media/image_13.jpg)
+
+11. Ensure that only the **test** environment is selected to deploy to and click **Build and Deploy** 
+
+![image alt text](./media/image_14.jpg)
+
+12. Once the API proxy is built and deployed **click** the link to view your proxy in the proxy editor. 
+
+![image alt text](./media/image_15.png)
+
+13. *Congratulations!* ...You have now built a reverse proxy for an existing backend service. You should see the proxy **Overview** screen.
+
+![image alt text](./media/image_16.png)
+
+## Test the API Proxy
+1. Let us test the newly built API proxy using the [REST Client](https://apigee-rest-client.appspot.com/). Open the REST Client on a new browser window.  
+
+2. Copy the URL for your API proxy. 
+
+![image alt text](./media/image_17.png)
+
+3. Paste the link into the REST Client and make a GET call
+
+![image alt text](./media/image_18.png)
+
+4. You should see a success response similar to this -
+![image alt text](./media/image_19.jpg)
+
+## Add Rate Limiting to the API Proxy
+1. Select **Develop → API Proxies** in the side navigation menu.
+
+![image alt text](./media/image_2.jpg)
+
+2. Click on **{your_initials}**_employee_proxy that you have created in earlier lab exercise.
+
+![image alt text](./media/image_3.png)
+
+3. Click on **Develop** tab to access API Proxy development dashboard.
 
 ![image alt text](./media/image_4.png)
 
 ![image alt text](./media/image_5.png)
 
-5. Click on **PreFlow** under Proxy Endpoint default, Click on **+Step** on top of Request flow to attach a spike arrest policy.
+4. Click on **PreFlow** under Proxy Endpoint default, Click on **+Step** on top of Request flow to attach a spike arrest policy.
 
 ![image alt text](./media/image_6_updated.png)
 
-6. Select **Spike Arrest Policy**. Click on **Add** button to add spike arrest policy to proxy endpoint preflow request.
+5. Select **Spike Arrest Policy**. Click on **Add** button to add spike arrest policy to proxy endpoint preflow request.
 
 ![image alt text](./media/image_7.png)
 
-7. You can notice Spike Arrest policy icon on top of request flow that shows where exactly policy is attached and policy XML configuration below in editor.
+6. You can notice Spike Arrest policy icon on top of request flow that shows where exactly policy is attached and policy XML configuration below in editor.
 
 ![image alt text](./media/image_8.png)
 
-8. Change the Policy XML configuration to below code & update the rate to 12pm.
+7. Change the Policy XML configuration to below code & update the rate to 12pm.
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SpikeArrest async="false" continueOnError="false" enabled="true" name="Spike-Arrest-1">
@@ -71,7 +170,7 @@ What actually happens, then? To prevent spike-like behavior, Spike Arrest smooth
 
 * **Per-second** rates get smoothed into full requests allowed in intervals of **milliseconds**. For example, 10ps gets smoothed like this: 1000 milliseconds (1 second) / 10ps = 100-millisecond intervals, or 1 request allowed every 100 milliseconds. A second request inside of 100ms will fail. Also, an 11th request within a second will fail.
 
-9. Click on **Save** to save the API Proxy changes.
+8. Click on **Save** to save the API Proxy changes.
 
 ![image alt text](./media/image_9.png)
 
