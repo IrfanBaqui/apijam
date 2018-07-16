@@ -49,7 +49,7 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 8. Verify the proxy was uploaded by selecting **Develop → API Proxies** in the side navigation menu.
 
-![image alt text](./media/image_0.jpg)
+![image alt text](./media/image_0.png)
 
 * You should see the new **Employees** proxy listed
 
@@ -59,7 +59,7 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 ![image alt text](./media/image_6.png)
 
-6. Verify that the proxy has been successfully deployed.
+9. Verify that the proxy has been successfully deployed.
 
 * Click on the Trace tab on the upper right corner
 
