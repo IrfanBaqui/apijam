@@ -29,7 +29,7 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 3. Select **Develop → API Proxies** in the side navigation menu
 
-![image alt text](./media/image_0.jpg)
+![image alt text](./media/image_0.png)
 
 4. Click the **+Proxy** button on the top-right corner to invoke the Create Proxy wizard. 
 
@@ -72,7 +72,7 @@ In this lab we will see how to use an out of the box traffic management policy, 
 ## Add Rate Limiting to the API Proxy
 1. Select **Develop → API Proxies** in the side navigation menu.
 
-![image alt text](./media/image_0.jpg)
+![image alt text](./media/image_0.png)
 
 2. Click on the **Employees** proxy that you created earlier.
 
