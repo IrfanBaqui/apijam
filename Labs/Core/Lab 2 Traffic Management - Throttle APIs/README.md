@@ -31,7 +31,7 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 ![image alt text](./media/image_0.jpg)
 
-4. Click **+Proxy** to invoke the Create Proxy wizard. 
+4. Click the **+Proxy** button on the top-right corner to invoke the Create Proxy wizard. 
 
 ![image alt text](./media/image_1.png)
 
@@ -49,11 +49,13 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 8. Verify the proxy was uploaded by selecting **Develop → API Proxies** in the side navigation menu.
 
-* You should see the new **Employee** proxy listed
+![image alt text](./media/image_0.jpg)
+
+* You should see the new **Employees** proxy listed
 
 ![image alt text](./media/image_5.png)
 
-* Click on the **Employee** proxy. Then click on **Deployment** and select the **test** environment to deploy the proxy to the test environment. 
+* Click on the **Employees** proxy. Then click on **Deployment** and select the **test** environment to deploy the proxy to the test environment. 
 
 ![image alt text](./media/image_6.png)
 
@@ -61,11 +63,11 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 * Click on the Trace tab on the upper right corner
 
-![image alt text])(./media/image_7.png)
+![image alt text](./media/image_7.png)
 
 * Click on the **Start Trace Session** button and then click on the **Send** button to send traffic to your new proxy. You should see transactions appear on the left hand pane as requests are sent to your proxy.
 
-![image alt text])(./media/image_8.png)
+![image alt text](./media/image_8.png)
 
 ## Add Rate Limiting to the API Proxy
 1. Select **Develop → API Proxies** in the side navigation menu.
