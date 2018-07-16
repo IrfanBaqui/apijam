@@ -21,116 +21,78 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 # Instructions
 
-## Upload an API Proxy
+## Create an API Proxy
 
-1. Download the sample Apigee API proxy [here](https://github.com/Enzyme3/apijam/raw/master/Labs/Core/Lab%202%20Traffic%20Management%20-%20Throttle%20APIs/apiproxy/Employees_API_Proxy.zip).
+1. Download the sample Apigee API proxy [here](https://github.com/Enzyme3/apijam/raw/master/Labs/Core/Lab%202%20Traffic%20Management%20-%20Throttle%20APIs/apiproxy/Employees.zip).
 
 2. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
 
 3. Select **Develop → API Proxies** in the side navigation menu
 
-![image alt text](./media/image_0.png)
+![image alt text](./media/image_0.jpg)
 
-4. Click **+Proxy** The Build a Proxy wizard is invoked. 
+4. Click **+Proxy** to invoke the Create Proxy wizard. 
 
-![image alt text](./media/image_6.jpg)
+![image alt text](./media/image_1.png)
 
-5. Select **Proxy Bundle** to import an existing proxy form a zuip archive.
+5. Select **Proxy Bundle** and then click **Next** to import an existing proxy form a zip archive.
 
-![image alt text](./media/image_7.png)
+![image alt text](./media/image_2.png)
 
-6. Click on **Choose File** and select the **Employee_API_Proxy** that was previously downloaded in step 1 and click **Next**
+6. Click on **Choose File** and select the **Employees.zip** that was previously downloaded in step 1 and click **Next**
 
-![image alt text](./media/image_8.png)
+![image alt text](./media/image_3.png)
 
 7. Click on **Build** to upload the the proxy
 
-![image alt text](./media/image_9.png)
+![image alt text](./media/image_4.png)
 
-8. Verify the proxy was uploaded by selecting **Develop → API Proxies** in the side navigation menu
+8. Verify the proxy was uploaded by selecting **Develop → API Proxies** in the side navigation menu.
 
 * You should see the new **Employee** proxy listed
 
-* Click on the **Employee** proxy. Then click on **Deployment** and select **test** environment to deploy the proxy to the test environment.
+![image alt text](./media/image_5.png)
 
-6. Enter details in the proxy wizard. Replace **{your-initials}** with the initials of your name. 
+* Click on the **Employee** proxy. Then click on **Deployment** and select the **test** environment to deploy the proxy to the test environment. 
 
-    * Proxy Name: **{your_initials}**_employee_proxy
+![image alt text](./media/image_6.png)
 
-    * Proxy Base Path: /v1/**{your_initials}**_employee_proxy
+6. Verify that the proxy has been successfully deployed.
 
-    * Existing API: Observe the field value which is auto filled from OpenAPI Spec.
+* Click on the Trace tab on the upper right corner
 
-![image alt text](./media/image_10.png)
+![image alt text])(./media/image_7.png)
 
-7. Verify the values and click **Next**.
+* Click on the **Start Trace Session** button and then click on the **Send** button to send traffic to your new proxy. You should see transactions appear on the left hand pane as requests are sent to your proxy.
 
-8. You can select, de-select list of API Proxy Resources that are pre-filled from OpenAPI Spec. Select all & Click on **Next**
-
-![image alt text](./media/image_11.png)
-
-9. Select **Pass through (none)** for the authorization in order to choose not to apply any security policy for the proxy. Click Next. 
-
-![image alt text](./media/image_12.jpg)
-
-10. Go with the **default Virtual Host** configuration.
-
-![image alt text](./media/image_13.jpg)
-
-11. Ensure that only the **test** environment is selected to deploy to and click **Build and Deploy** 
-
-![image alt text](./media/image_14.jpg)
-
-12. Once the API proxy is built and deployed **click** the link to view your proxy in the proxy editor. 
-
-![image alt text](./media/image_15.png)
-
-13. *Congratulations!* ...You have now built a reverse proxy for an existing backend service. You should see the proxy **Overview** screen.
-
-![image alt text](./media/image_16.png)
-
-## Test the API Proxy
-1. Let us test the newly built API proxy using the [REST Client](https://apigee-rest-client.appspot.com/). Open the REST Client on a new browser window.  
-
-2. Copy the URL for your API proxy. 
-
-![image alt text](./media/image_17.png)
-
-3. Paste the link into the REST Client and make a GET call
-
-![image alt text](./media/image_18.png)
-
-4. You should see a success response similar to this -
-![image alt text](./media/image_19.jpg)
+![image alt text])(./media/image_8.png)
 
 ## Add Rate Limiting to the API Proxy
 1. Select **Develop → API Proxies** in the side navigation menu.
 
-![image alt text](./media/image_2.jpg)
+![image alt text](./media/image_0.jpg)
 
-2. Click on **{your_initials}**_employee_proxy that you have created in earlier lab exercise.
-
-![image alt text](./media/image_3.png)
-
-3. Click on **Develop** tab to access API Proxy development dashboard.
-
-![image alt text](./media/image_4.png)
+2. Click on the **Employees** proxy that you created earlier.
 
 ![image alt text](./media/image_5.png)
 
-4. Click on **PreFlow** under Proxy Endpoint default, Click on **+Step** on top of Request flow to attach a spike arrest policy.
+3. Click on the **Develop** tab to access the API Proxy development dashboard.
 
-![image alt text](./media/image_6_updated.png)
+![image alt text](./media/image_9.png)
 
-5. Select **Spike Arrest Policy**. Click on **Add** button to add spike arrest policy to proxy endpoint preflow request.
+4. Click on **PreFlow** under Proxy Endpoints default, and then click on **+Step** on the upper right of the Request flow to attach a spike arrest policy.
 
-![image alt text](./media/image_7.png)
+![image alt text](./media/image_10.png)
+
+5. Select **Spike Arrest Policy**. Click on **Add** button to add the spike arrest policy to the proxy endpoint preflow request.
+
+![image alt text](./media/image_11.png)
 
 6. You can notice Spike Arrest policy icon on top of request flow that shows where exactly policy is attached and policy XML configuration below in editor.
 
-![image alt text](./media/image_8.png)
+![image alt text](./media/image_2.png)
 
-7. Change the Policy XML configuration to below code & update the rate to 12pm.
+7. Change the Policy XML configuration to the below snippet to enforce a rate of 12 requests per minute.
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SpikeArrest async="false" continueOnError="false" enabled="true" name="Spike-Arrest-1">
@@ -155,7 +117,7 @@ What actually happens, then? To prevent spike-like behavior, Spike Arrest smooth
 
 8. Click on **Save** to save the API Proxy changes.
 
-![image alt text](./media/image_9.png)
+![image alt text](./media/image_13.png)
 
 *Congratulations!*...You have now secured your backend against denial of service attacks, performance lags or downtime of target servers.
 
@@ -163,7 +125,7 @@ What actually happens, then? To prevent spike-like behavior, Spike Arrest smooth
 
 1. Let us test the updated API proxy using the Trace Console. Click on **Trace** tab.
 
-![image alt text](./media/image_10.png)
+![image alt text](./media/image_7.png)
 
 2. Click on **Start Trace Session** to see API Proxy with spike arrest in action.
 
@@ -171,13 +133,9 @@ What actually happens, then? To prevent spike-like behavior, Spike Arrest smooth
 
 3. Click on **Send** button multiple times, You will see 500 response code when spike arrest policy kicks in to protect target servers from spike in traffic.
 
-![image alt text](./media/image_12.png)
+![image alt text](./media/image_14.png)
 
 4. You might notice that number of requests with 200 response is more than spike arrest rate value configured, It’s due to multiple message processors where policies gets executed and each has individual counters.
-
-5. You can also use [Apigee Rest Client](https://apigee-rest-client.appspot.com/) to test Spike Arrest Policy.
-
-![image alt text](./media/image_13.png)
 
 # Lab Video
 
