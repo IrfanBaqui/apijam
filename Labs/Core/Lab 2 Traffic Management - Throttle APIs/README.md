@@ -6,8 +6,7 @@
 
 # Use case
 
-You have a requirement to create a reverse proxy for taking requests from the Internet and forward them to an existing service. You have decided to follow a design first approach & built a reusable component, a specification which can be used to build API Proxies, generate API documentation, generate API test cases using OpenAPI Specification format. You would like to generate an Apigee API Proxy by using the OpenAPI Specification (Swagger) instead of building the API Proxy from scratch.
-Also, you have an additional requirement to protect your target servers (backend) from traffic spikes. You would like to protect your APIs from denial of service attacks that might lead to performance lags or downtime of your backend.
+You have an existing Apigee API proxy that takes requests from the Internet and forwards them to an existing service. You have a requirement to protect your target servers (backend) from traffic spikes. You would like to protect your APIs from denial of service attacks that might lead to performance lags or downtime of your backend. 
 
 # How can Apigee Edge help?
 
@@ -22,53 +21,37 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 # Instructions
 
-1. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
+## Upload an API Proxy
 
-2. Select **Develop → Specs** in the side navigation menu
+1. Download the sample Apigee API proxy [here](https://github.com/Enzyme3/apijam/raw/master/Labs/Core/Lab%202%20Traffic%20Management%20-%20Throttle%20APIs/apiproxy/Employees_API_Proxy.zip).
+
+2. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
+
+3. Select **Develop → API Proxies** in the side navigation menu
 
 ![image alt text](./media/image_0.png)
 
-3. Click **+Spec.** Click on **Import URL** to add a new spec from existing source.
-
-![image alt text](./media/image_1.png)
-
-4. Enter spec details. Replace **{your-initials}** with the initials of your name.
-
-   * File Name: **{your-initials}**_employee_api_spec
-
-   * URL: [http://playground.apistudio.io/070cde0a-44f7-4e2c-8085-6e1020db7baf/spec](http://playground.apistudio.io/070cde0a-44f7-4e2c-8085-6e1020db7baf/spec)
-
-![image alt text](./media/image_2.png)
-
-5. Verify the values and click **Import**. Spec has been imported into Apigee Edge & Ready to use. You should see your spec in the list. For example,
-
-![image alt text](./media/image_3.png)
-
-6. Click on **{your-initials}**_employee_api_spec from the list to access Open API spec editor & interactive documentation that lists API details & API Resources.
-
-![image alt text](./media/image_4.png)
-
-## Create an API Proxy
-
-1. It’s time to create Apigee API Proxy from Open API Specification. Click on **Develop → API Proxies** from side navigation menu.
-
-![image alt text](./media/image_5.jpg)
-
-2. Click **+Proxy** The Build a Proxy wizard is invoked. 
+4. Click **+Proxy** The Build a Proxy wizard is invoked. 
 
 ![image alt text](./media/image_6.jpg)
 
-3. Select **Reverse proxy**, Click on **Use OpenAPI** below reverse proxy option.
+5. Select **Proxy Bundle** to import an existing proxy form a zuip archive.
 
 ![image alt text](./media/image_7.png)
 
-4. You should see a popup with list of Specs. Select **{your-initials}**_employee_api_spec and click **Select.** 
+6. Click on **Choose File** and select the **Employee_API_Proxy** that was previously downloaded in step 1 and click **Next**
 
 ![image alt text](./media/image_8.png)
 
-5. You can see the selected OpenAPI Spec URL below the Reverse Proxy option, Click **Next** to continue.
+7. Click on **Build** to upload the the proxy
 
 ![image alt text](./media/image_9.png)
+
+8. Verify the proxy was uploaded by selecting **Develop → API Proxies** in the side navigation menu
+
+* You should see the new **Employee** proxy listed
+
+* Click on the **Employee** proxy. Then click on **Deployment** and select **test** environment to deploy the proxy to the test environment.
 
 6. Enter details in the proxy wizard. Replace **{your-initials}** with the initials of your name. 
 
