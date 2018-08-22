@@ -50,8 +50,8 @@ Note: In the following snippet, the Pattern value that reads *{my_initials}* is 
 
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ExtractVariables async="false" continueOnError="false" enabled="true" name="Extract-Initials">
-    <DisplayName>Extract My Initials</DisplayName>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="Extract-Variables-1">
+    <DisplayName>Extract Variables-1</DisplayName>
     <Properties/>
     <QueryParam name="initials">
         <Pattern ignoreCase="true">{my_initials}</Pattern>
@@ -59,13 +59,7 @@ Note: In the following snippet, the Pattern value that reads *{my_initials}* is 
 </ExtractVariables>
 ```
 
-8. Click on **Save**. It will prompts to create a new revision, then click on *Save as new Revision*. 
-
-![image alt text](./media/image_4.png)
-
-9. **Deploy** the new revision to *test* environment. 
-
-![image alt text](./media/image_6_updated.png)
+8. Click on **Save**
 
 ## Trace and Troubleshoot
 
@@ -98,7 +92,7 @@ Consider a scenario where one of your API consumers reports seeing 404 errors in
 6. Edit your URL field once more to follow the pattern below
 
 ```
-/e7f5ce16-205e-11e7-990c-0eec2415f3df?initials={your initials}
+/41f1f77b-8922-11e8-86ee-021e63aadcc4?initials={your initials}
 ```
 
 7. Update above {your initials} with your actual initials & remove the braces
@@ -118,7 +112,7 @@ Now, imagine troubleshooting this issue - except with hundreds or thousands of r
 2. Expand the filters pane on the left side of your screen.  Then add a query parameter filter named ‘initials’.  Put your initials in the value column and ensure the URL also holds your initials, like before.
 
 ```
-/e7f5ce16-205e-11e7-990c-0eec2415f3df?initials={your initials}
+/41f1f77b-8922-11e8-86ee-021e63aadcc4?initials={your initials}
 ```
 
 ![image alt text](./media/image_8_updated.png)
@@ -128,7 +122,7 @@ Now, imagine troubleshooting this issue - except with hundreds or thousands of r
 4. Update the URL with a new, fake value for the initials query parameter.  Example below.
 
 ```
-/e7f5ce16-205e-11e7-990c-0eec2415f3df?initials=xyz
+/41f1f77b-8922-11e8-86ee-021e63aadcc4?initials=xyz
 ```
 
 ![image alt text](./media/image_11.png)
@@ -177,8 +171,6 @@ In this lab, you learned how to diagnose a reported problem with your API in rea
 
     * [https://community.apigee.com/articles/36248/apigee-4mv4d-api-proxy-trace-console.html](https://community.apigee.com/articles/36248/apigee-4mv4d-api-proxy-trace-console.html)
 
-# Rate this lab
+# Next Lab
 
-How did you link this lab? Rate [here](https://docs.google.com/a/google.com/forms/d/1Rc17-TqTtqfXgOu9SqYbVGyAzssnANftD2Hpspmr1KQ).
-
-Now to go [Lab-4](https://github.com/apigee/devjam3/tree/master/Labs/Core/Lab%204%20API%20Security%20-%20Securing%20APIs%20with%20API%20Keys)
+Now to go [Lab-4](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%204%20API%20Security%20-%20Securing%20APIs%20with%20API%20Keys)
