@@ -208,8 +208,3 @@ In this exercise, you learned about custom reports in Apigee Edge. You also adde
 [https://apigee.com/about/blog/cto-musings/api-best-practices-analytics](https://apigee.com/about/blog/cto-musings/api-best-practices-analytics)
 
     * Watch this 4 minute video on "Custom Reports using Apigee Edge Analytics" - [https://youtu.be/lTcuc2so4oI](https://youtu.be/lTcuc2so4oI)
-
-# Rate this lab
-
-How did you like this lab? Rate [here](https://goo.gl/forms/4elHC2g6EuwnBlon1).
-
