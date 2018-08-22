@@ -145,7 +145,18 @@ If you like to learn by watching, here is a short video on using Spike Arrest po
 
 # Earn Extra-points
 
-Now that you have protected your backend against spike in traffic, Explore more about spike arrest policy using docs here, [http://docs.apigee.com/api-services/reference/spike-arrest-policy](http://docs.apigee.com/api-services/reference/spike-arrest-policy) & update the policy with identifer like queryparam on which spike arrest counter is updated. Use message weight property to assign a weight to the counter.
+Now that you have protected your backend against spike in traffic, Explore more about spike arrest policy using docs here, [http://docs.apigee.com/api-services/reference/spike-arrest-policy](http://docs.apigee.com/api-services/reference/spike-arrest-policy) & update the policy with identifer like queryparam on which spike arrest counter is updated. 
+
+```
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SpikeArrest async="false" continueOnError="false" enabled="true" name="Spike-Arrest-1">
+    <DisplayName>Spike Arrest-1</DisplayName>
+    <Properties/>
+    <Rate>12pm</Rate>
+    <UseEffectiveCount>true</UseEffectiveCount>
+    <Identifier ref="request.queryparam.limit"/>
+</SpikeArrest>
+```
 
 # Quiz
 
