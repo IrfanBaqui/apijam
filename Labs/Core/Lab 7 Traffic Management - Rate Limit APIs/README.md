@@ -100,8 +100,8 @@ That completes this hands-on lesson. In this simple lab you learned how to apply
 
 * Watch this 4minute video on "Dynamic Quotas’ - [https://youtu.be/z8Rj_VzSbh4](https://youtu.be/z8Rj_VzSbh4) 
 
-# Rate this lab
+# Next Lab
 
-How did you like this lab? Rate [here](https://goo.gl/forms/BJGUY07XCGboHxrw2).
+Now go to [Lab-8](../Lab%208%20API%20Analytics%20-%20Custom%20Reports)
 
 
