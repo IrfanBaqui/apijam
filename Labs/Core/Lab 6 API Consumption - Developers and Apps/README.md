@@ -1,4 +1,4 @@
-# API Consumption : Developers and Apps
+# API Consumption : Developers and Apps 
 
 *Duration : 15 mins*
 
@@ -16,23 +16,23 @@ In this lab, we will see how to register as an App Developer, navigate through A
 
 # Pre-requisites
 
-*API Security* and *API Publishing* lab exercises.
+*API Security* and *API Publishing* lab exercises. 
 
 # Instructions
 
-* Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI.
+* Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
 
 * Select **Publish → Portals** in the side navigation menu.
 
-![image alt text](./media/select_portal.png)
+![image alt text](./media/image_0.png)
 
-* Click on **{your_initials}_{api_proxy_name}_portal** that you have created in earlier lab exercise.
+* Click on **{your_initials}_{api_proxy_name}_portal** that you have created in earlier lab exercise.	
 
-![image alt text](./media/select_portal2.png)
+![image alt text](./media/image_1.png)
 
 * Click on **Live Portal** link to access Developer Portal to start interacting as Developer persona.
 
-![image alt text](./media/live_portal.png)
+![image alt text](./media/image_2.png)
 
 ![image alt text](./media/image_3.png)
 
@@ -60,15 +60,15 @@ In this lab, we will see how to register as an App Developer, navigate through A
 
 ![image alt text](./media/image_9.png)
 
-![image alt text](./media/portal_view_api_docs.png)
+![image alt text](./media/image_10.png)
 
 * Go through API Documentation and understand the API Request and Response.
 
-![image alt text](./media/portal_docs.png)
+![image alt text](./media/image_11.png)
 
 * Let’s **create** a Developer App.
 
-Typically, developers who want to consume APIs go to developer portal and register to use them. When registering, the developer gets to select which of API products he or she wishes to use. For example, some products may be offered for free, while others require payment depending on a service plan. Upon completion, this registration step produces an Edge entity called a **developer app**. A developer app includes the products the developer selected and a set of API keys that the developer will be required to use to access the APIs that are associated with those products.
+Typically, developers who want to consume APIs go to developer portal and register to use them. When registering, the developer gets to select which of API products he or she wishes to use. For example, some products may be offered for free, while others require payment depending on a service plan. Upon completion, this registration step produces an Edge entity called a **developer app**. A developer app includes the products the developer selected and a set of API keys that the developer will be required to use to access the APIs that are associated with those products. 
 
 * To Create an App, Click on **Email Address** & then **My Apps** in top menu bar.
 
@@ -80,25 +80,25 @@ Typically, developers who want to consume APIs go to developer portal and regist
 
 * Update App Name & Description. Click on **Create** button to create a new App.
 
-![image alt text](./media/create_app.png)
+![image alt text](./media/image_14.png)
 
-* Click on **{your_intial}-app** to access App Details.
+* Click on **{your_intial}-employee-app** to access App Details.
 
-![image alt text](./media/select_app.png)
+![image alt text](./media/image_15.png)
 
 * Let’s add API Product to app before we user API keys, Click on **Manage Products** to add API Product to the App that we have created.
 
-![image alt text](./media/manage_products.png)
+![image alt text](./media/image_16.png)
 
-* Choose **{your_initials}_mock**_product & flip **Access** switch to **ON** and then click on **Save** to add API Product to the App.
+* Choose **{your_initials}_{api_name}**_product & flip **Access** switch to **ON** and then click on **Save** to add API Product to the App.
 
-![image alt text](./media/enable_product.png)
+![image alt text](./media/image_17.png)
 
 * You have now successfully generated an API Key which can be used to make secured API Calls (You may need to refresh your browser to see the API Key).
 
-![image alt text](./media/get_key.png)
+![image alt text](./media/image_18.png)
 
-* From the main Apigee UI (not the Developer Portal), go back to the Mock Target API you've already created and click the **Trace** tab in the upper right.
+* From the main Apigee UI (not the Developer Portal), go back to the Employee API you've already created and click the **Trace** tab in the upper right.
 
 * Click **Start Trace Session** to begin a trace session.
 
@@ -110,7 +110,7 @@ Typically, developers who want to consume APIs go to developer portal and regist
 
    You should see a 2xx response code and the Trace for that request should show that the Verify API Key policy is now            passing.
 
-![image alt text](./media/test.png)
+![image alt text](./media/image_19.png)
 
 # Lab Video
 
@@ -143,3 +143,5 @@ That completes this hands-on lesson. In this simple lab you learned how to self 
 How did you like this lab? Rate [here](https://goo.gl/forms/H4qE5nLy36yWjj642).
 
 Now to go [Lab-5](../Lab%205%20Traffic%20Management%20-%20Rate%20Limit%20APIs/README.md)
+
+
