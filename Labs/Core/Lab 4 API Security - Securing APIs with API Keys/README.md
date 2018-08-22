@@ -111,4 +111,4 @@ In this lab you learned how to protect your API Proxy using the Verify API Key p
 
 # Next Lab
 
-Now go to [Lab-5](../Lab%203%20API%20Publishing%20-%20API%20Products%20and%20Developer%20Portals)
+Now go to [Lab-5](../Lab%205%20API%20Publishing%20-%20API%20Products%20and%20Developer%20Portals)
