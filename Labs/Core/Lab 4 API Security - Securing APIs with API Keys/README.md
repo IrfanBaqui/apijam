@@ -85,7 +85,7 @@ For this lab, you will need an API Proxy that is not currently secured.  If you 
 
 * You should see a 401 (unauthorized) response for your API Call because the API Proxy was expecting an API Key as a query parameter.  See the trace session below
 
-* NOTE: In Lab 4, you will get an API Key that will allow you to make this API call successfully.
+* NOTE: In a later lab, you will get an API Key that will allow you to make this API call successfully.
 
 ![image alt text](./media/trace.png)
 
