@@ -16,52 +16,13 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 # Pre-requisites
 
-* Basic understanding of [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification) (Swagger)
-* Completed a previous [Virtual API Jam](https://github.com/rmistry75/devjam3/tree/master/Labs/VirtualAPIJam) or have the equivalent knowledge
+* Completed Lab 1
 
 # Instructions
 
-## Create an API Proxy
+## Verify Created Proxy
 
-1. Download the sample Apigee API proxy [here](https://github.com/Enzyme3/apijam/raw/master/Labs/Core/Lab%202%20Traffic%20Management%20-%20Throttle%20APIs/apiproxy/Employees.zip).
-
-2. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
-
-3. Select **Develop → API Proxies** in the side navigation menu
-
-![image alt text](./media/image_0.png)
-
-4. Click the **+Proxy** button on the top-right corner to invoke the Create Proxy wizard. 
-
-![image alt text](./media/image_1.png)
-
-5. Select **Proxy Bundle** and then click **Next** to import an existing proxy form a zip archive.
-
-![image alt text](./media/image_2.png)
-
-6. Click on **Choose File** and select the **Employees.zip** that was previously downloaded in step 1 and click **Next**
-
-![image alt text](./media/image_3.png)
-
-7. Click on **Build** to upload the the proxy
-
-![image alt text](./media/image_4.png)
-
-8. Verify the proxy was uploaded by selecting **Develop → API Proxies** in the side navigation menu.
-
-![image alt text](./media/image_0.png)
-
-* You should see the new **Employees** proxy listed
-
-![image alt text](./media/image_5.png)
-
-* Click on the **Employees** proxy. Then click on **Deployment** and select the **test** environment to deploy the proxy to the test environment. 
-
-![image alt text](./media/image_6.png)
-
-9. Verify that the proxy has been successfully deployed.
-
-* Click on the Trace tab on the upper right corner
+1. Select the proxy you created in Lab 1, and click on the Trace tab on the upper right corner
 
 ![image alt text](./media/image_7.png)
 
@@ -92,7 +53,7 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 6. You can notice Spike Arrest policy icon on top of request flow that shows where exactly policy is attached and policy XML configuration below in editor.
 
-![image alt text](./media/image_2.png)
+![image alt text](./media/image_12.png)
 
 7. Change the Policy XML configuration to the below snippet to enforce a rate of 12 requests per minute.
 ```
