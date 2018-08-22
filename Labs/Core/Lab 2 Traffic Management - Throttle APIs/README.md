@@ -111,7 +111,7 @@ Now that you have protected your backend against spike in traffic, Explore more 
 <SpikeArrest async="false" continueOnError="false" enabled="true" name="Spike-Arrest-1">
     <DisplayName>Spike Arrest-1</DisplayName>
     <Properties/>
-    <Rate>12pm</Rate>
+    <Rate>5pm</Rate>
     <UseEffectiveCount>true</UseEffectiveCount>
     <Identifier ref="request.queryparam.limit"/>
 </SpikeArrest>
