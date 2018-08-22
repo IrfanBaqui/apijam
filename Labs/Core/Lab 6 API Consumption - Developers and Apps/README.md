@@ -140,6 +140,6 @@ That completes this hands-on lesson. In this simple lab you learned how to self 
 
 # Next Lab
 
-Now to go [Lab-7](../Lab%207%20Traffic%20Management%20-%20Rate%20Limit%20APIs)
+Now go to [Lab-7](../Lab%207%20Traffic%20Management%20-%20Rate%20Limit%20APIs)
 
 
