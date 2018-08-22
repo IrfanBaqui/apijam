@@ -161,5 +161,5 @@ That completes this hands-on lesson. In this simple lab you learned how to creat
 
 # Rate this lab
 
-Now go to [Lab-2](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%202%20Traffic%20Management%20-%20Throttle%20APIs)
+Now go to [Lab-2](../Lab%202%20Traffic%20Management%20-%20Throttle%20APIs)
 
