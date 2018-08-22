@@ -92,8 +92,6 @@ What actually happens, then? To prevent spike-like behavior, Spike Arrest smooth
 
 2. Click on **Start Trace Session** to see API Proxy with spike arrest in action.
 
-![image alt text](./media/image_11.png)
-
 3. Click on **Send** button multiple times, You will see 500 response code when spike arrest policy kicks in to protect target servers from spike in traffic.
 
 ![image alt text](./media/image_14.png)
