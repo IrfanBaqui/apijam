@@ -138,10 +138,8 @@ That completes this hands-on lesson. In this simple lab you learned how to self 
 
     * Apigee Developer Portal , [https://docs-new.apigee.com/portal](https://docs-new.apigee.com/portal)
 
-# Rate this lab
+# Next Lab
 
-How did you like this lab? Rate [here](https://goo.gl/forms/H4qE5nLy36yWjj642).
-
-Now to go [Lab-5](../Lab%205%20Traffic%20Management%20-%20Rate%20Limit%20APIs/README.md)
+Now to go [Lab-7](../Lab%207%20Traffic%20Management%20-%20Rate%20Limit%20APIs)
 
 
