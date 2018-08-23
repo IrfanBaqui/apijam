@@ -16,7 +16,7 @@ Secondly, Apigee provides the capability to apply API Quota settings at the ‘A
 
 # Pre-requisites
 
-You must have completed Labs 1 - 4 in order to run this lab. 
+You must have completed previous Labs in order to run this lab. 
 
 # Instructions
 
