@@ -40,7 +40,7 @@ You have an API proxy created in Apigee Edge. If not, jump back to the "Create R
 
 ![image alt text](./media/image_3_updated.png)
 
-6. Select **Extract Variables Policy**. Name the policy "Extract-Initials", and click on the **Add** button to add the Extract Variables policy.  Be aware that if you choose a different policy name, it will conflict when you paste the policy code snippet below.
+6. Select **Extract Variables Policy**. Click on the **Add** button to add the Extract Variables policy.  Be aware that if you choose a different policy name, it will conflict when you paste the policy code snippet below.
 
 Note: The Extract Variables policy icon is visible on the request flow and shows exactly where the policy is attached. Corresponding XML (in keeping with Edge’s config-then-code approach) can be seen in an edit pane below.
 
@@ -50,8 +50,8 @@ Note: The Extract Variables policy icon is visible on the request flow and shows
 
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ExtractVariables async="false" continueOnError="false" enabled="true" name="Extract-Initials">
-    <DisplayName>Extract My Initials</DisplayName>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="Extract-Variables-1">
+    <DisplayName>Extract Variables-1</DisplayName>
     <Properties/>
     <QueryParam name="initials">
         <Pattern ignoreCase="true">{my_initials}</Pattern>
@@ -59,12 +59,7 @@ Note: The Extract Variables policy icon is visible on the request flow and shows
 </ExtractVariables>
 ```
 
-8. Click on **Save**. It may prompt to create a new revision. If it does, then click on *Save as new Revision*, and then **Deploy** the new revision to *test* environment. 
-
-![image alt text](./media/image_4.png)
-
-
-![image alt text](./media/image_6_updated.png)
+8. Click on **Save**
 
 ## Trace and Troubleshoot
 
@@ -97,7 +92,11 @@ Consider a scenario where one of your API consumers reports seeing 404 errors in
 6. Edit your URL field once more to follow the pattern below
 
 ```
+<<<<<<< HEAD
 /41be3def-8922-11e8-86ee-021e63aadcc4?initials={your initials}
+=======
+/41f1f77b-8922-11e8-86ee-021e63aadcc4?initials={your initials}
+>>>>>>> kevin/master
 ```
 
 7. Update above {your initials} with your actual initials & remove the braces
@@ -117,7 +116,11 @@ Now, imagine troubleshooting this issue - except with hundreds or thousands of r
 2. Expand the filters pane on the left side of your screen.  Then add a query parameter filter named ‘initials’.  Put your initials in the value column and ensure the URL also holds your initials, like before.
 
 ```
+<<<<<<< HEAD
 /41be3def-8922-11e8-86ee-021e63aadcc4?initials={your initials}
+=======
+/41f1f77b-8922-11e8-86ee-021e63aadcc4?initials={your initials}
+>>>>>>> kevin/master
 ```
 
 ![image alt text](./media/image_8_updated.png)
@@ -127,7 +130,11 @@ Now, imagine troubleshooting this issue - except with hundreds or thousands of r
 4. Update the URL with a new, fake value for the initials query parameter.  Example below.
 
 ```
+<<<<<<< HEAD
 /41be3def-8922-11e8-86ee-021e63aadcc4?initials=xyz
+=======
+/41f1f77b-8922-11e8-86ee-021e63aadcc4?initials=xyz
+>>>>>>> kevin/master
 ```
 
 ![image alt text](./media/image_11.png)
@@ -176,8 +183,6 @@ In this lab, you learned how to diagnose a reported problem with your API in rea
 
     * [https://community.apigee.com/articles/36248/apigee-4mv4d-api-proxy-trace-console.html](https://community.apigee.com/articles/36248/apigee-4mv4d-api-proxy-trace-console.html)
 
-# Rate this lab
+# Next Lab
 
-How did you link this lab? Rate [here](https://docs.google.com/a/google.com/forms/d/1Rc17-TqTtqfXgOu9SqYbVGyAzssnANftD2Hpspmr1KQ).
-
-Now to go [Lab-4](https://github.com/apigee/devjam3/tree/master/Labs/Core/Lab%204%20API%20Security%20-%20Securing%20APIs%20with%20API%20Keys)
+Now to go [Lab-4](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%204%20API%20Security%20-%20Securing%20APIs%20with%20API%20Keys)

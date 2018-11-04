@@ -66,7 +66,7 @@ Authorization code is one of the most commonly used OAuth 2.0 grant types. The a
 
   ![image alt text](./media/image_8.png)
 
-* Select the API Product that you created as a part of *API Security - Securing APIs with API Keys* lab.
+* Select the Platinum API Product that you created as a part of the previous labs.
 
 	![image alt text](./media/image_9.png)
 
@@ -86,7 +86,7 @@ Authorization code is one of the most commonly used OAuth 2.0 grant types. The a
 
 	![image alt text](./media/image_13.jpg)
 
-* Click on the API proxy that you created in "API Design : Create a Reverse Proxy with OpenAPI Specification" lab. 
+* Click on the Employee API proxy that you created in the previous labs.
 
 * Click on the **Develop** tab. Select **PreFlow** from the sidebar under **Proxy Endpoints** section
 
@@ -145,11 +145,21 @@ Note: You’ll have to remove the Authorization header using the Assign Message 
 
 	![image alt text](./media/image_19.png)
 
-* Select the app that you created in the *API Security : Securing APIs with API Key* lab.
+* Select the Platinum app that you created in the previous labs.
 
 	![image alt text](./media/image_20.png)
 
-* Click on the **Show** button under Consumer Key, Consumer Secret.
+* Click on **Edit**
+
+	![image alt text](./media/image_10.png)
+
+* Add a sample **Callback URL** that points to localhost. This is the endpoint your browser will be redirected to with the OAuth authorization code
+```
+http://localhost:8080/test
+```
+* Save the configuration
+
+* While still in the platinum app, Click on the **Show** button under Consumer Key, Consumer Secret.
 
 * Copy the values and store them somewhere safe.
 
@@ -163,21 +173,16 @@ Note: You’ll have to remove the Authorization header using the Assign Message 
 
 	Windows users, refer this [link](https://support.microsoft.com/en-us/kb/191239), or use this [link](https://www.base64encode.org/) to generate the value.
 
-* Copy the URL for oauth API proxy. 
+* Copy the URL for oauth API proxy. (Can be found by selecting the OAuth proxy and viewing the Overview tab
 
 	![image alt text](./media/image_22.png)
 
 * First, you’ll obtain an Authorization code which will be exchanged to obtain the access token. To obtain an Authorization code, you’ll have to call the ```/authorize``` endpoint with your app’s client id, code response type and required scopes as query params
-
-	Query param: 
-  ```
-  response_type=code, client_id=<your app’s client id>,scope=READ,UPDATE
-  ```
   
 	The final URL will look something like this - 
   
   ```
-  http://apigeedemovideos-test.apigee.com/v1/mrk/oauth_ac/authorize?client_id=<client_id>&response_type=code&scope=READ,UPDATE
+  http://<org-name>.apigee.com/v1/<initials>/oauth_ac/authorize?client_id=<client_id>&response_type=code&scope=READ,UPDATE
   ```
 
 * Make a call to this URL from your browser, it will then redirect you to a login page which will look like this.
