@@ -14,12 +14,6 @@ Apigee Edge provides multiple options for your Developer Portal.  There is a lig
 
 In this lab, you will create a Developer Portal and publish an OpenAPI specification that can be used by developers.
 
-# Pre-requisites
-
-For this lab, you will need…
-
-* An OpenAPI specification uploaded to your Organization.  This specification will make up the documentation of your API Proxy.  If you do not have an OpenAPI Specification available for this lab, revisit the lab *API Design : Create a Reverse Proxy from OpenAPI Spec* and then return here to complete these steps.
-
 # Instructions
 
 ## Publish API as part of API Product
@@ -32,7 +26,7 @@ API Products (which contain API Proxies) are the unit of deployment to the Devel
 
     * Section: Product Details
 
-        * Name: **{your_initials}_{api_name}**_product
+        * Name: **{api_name}**_product
 
         * Environment: test
 
@@ -44,7 +38,22 @@ API Products (which contain API Proxies) are the unit of deployment to the Devel
 
             * Click the **+API Proxy** button
 
-            * Select your Employee API Proxy.
+            * Select your Litmos API Proxy.
+
+            * Resources: `/`
+
+            * Click **Import Resource**
+        
+        * Section: API Proxies
+
+            * Click the **+API Proxy** button
+
+            * Select your Litmos API Proxy.
+
+            * Resources: **`/**`**
+
+            * Click **Import Resource**
+
 
 * **Save** the API Product.
 
@@ -58,13 +67,11 @@ Note: We are adding the entire API Proxy to the API Product.  We can just as eas
 
 * Enter details in the portal creation wizard. Replace **{your-initials}** with the initials of your name and replace **{api_proxy_name}** with the name of the proxy.
 
-  * Name: **{your_initials}**_**{api_proxy_name}**_portal
+  * Name: **{api_proxy_name}**_portal
 
   * Description: Enter a brief description
 
 * Click **Create Portal**
-
-![image alt text](./media/image_2.png)
 
 ## Publish an API Product to the Portal
 
@@ -76,17 +83,13 @@ Note: We are adding the entire API Proxy to the API Product.  We can just as eas
 
 ![image alt text](./media/image_4.png)
 
-* Select the API Product to publish
-
-![image alt text](./media/image_5.png)
+* Select the API Product to publish (make sure to select your own product)
 
 * Choose a Snapshot Source.  A Snapshot represents a version of the OpenAPI Specification at a particular point in time.  The Source is the OpenAPI Specification used to generate the Snapshot.  Because the specification might change over time, you take snapshots so that your Portal will reflect the version of the specification that is published, which may differ from the version under current development.  Read [this document](https://docs-new.apigee.com/publish-apis#snapshot-overview) to better understand snapshots.
 
 ![image alt text](./media/image_6.png)
 
-* Select the OpenAPI Specification from which to create a Snapshot. (NOTE: technically, you should update the "host:" and "path:" variables in your OpenAPI Spec that you created in Lab 1 so they now point to your API proxy hosted on Apigee.  However, for the purposes of this lab, it is also OK to use your existing OpenAPI Spec as is.)
-
-![image alt text](./media/image_7.png)
+* Select the OpenAPI Specification from which to create a Snapshot. (NOTE: You should have already updated the "host:" and "path:" variables in your OpenAPI Spec so they now point to your API proxy hosted on Apigee.)
 
 * Select the "Anonymous users" option so anyone can view this API through the portal. Click **Finish** to publish the API product (and OpenAPI Specification Snapshot) to the Developer Portal.
 
@@ -99,14 +102,6 @@ Note: We are adding the entire API Proxy to the API Product.  We can just as eas
 * In the Portal UI, click **APIs** to view the products that have been published. For demonstrative purposes, the screenshot includes multiple products. Products are used to bundle APIs together so that a developer can request access to a set of related functionality without registering for each API.  They are also useful for managing access to, and quotas for, particular developers.  For more on API Products, [read this document](http://docs.apigee.com/developer-services/content/what-api-product).
 
 ![image alt text](./media/image_11.png)
-
-* The Portal will display the OpenAPI Specification (Swagger UI) for browsing the APIs included in the product.  The view below contains two collapsed operations and one expanded to show the details of the operation.  Depending on the method, you’d expect to see model details, response codes, etc., as per the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
-
-![image alt text](./media/image_12.png)
-
-# Lab Video
-
-If you would rather watch a video that covers this topic, point your browser [here](https://www.youtube.com/watch?v=_gDpzDJPNQg). (note: instead of using the "Street Carts" sample, use the "Employee API" that you have built in Lab 1).
 
 # Earn Extra-points
 

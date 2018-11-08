@@ -16,13 +16,7 @@ The API proxy decouples your backend service implementation from the API that de
 
 In this lab, we will see how to create a reverse proxy, that routes inbound requests to existing HTTP backend services using a readily available OpenAPI specification.
 
-# Pre-requisites
-
-* Basic understanding of [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification) (Swagger)
-* Open the [REST Client](https://apigee-rest-client.appspot.com/) on a browser window.
-
-# Instructions
-
+# Part A - Design an API Proxy
 ## Import an Open API Specification
 
 1. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
@@ -31,25 +25,17 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ![image alt text](./media/image_0.png)
 
-3. Click **+Spec.** Click on **Import URL** to add a new spec from existing source.
+3. Click **+Spec.** Click on **New** to add a new spec from the UI.
 
-![image alt text](./media/image_1.png)
+4. Copy the spec details from [here](./resources/litmos-api-spec.yaml) and paste it on the left pane. 
 
-4. Enter spec details. Replace **{your-initials}** with the initials of your name.
+5. Edit the **basePath** from `/v1` to `/v1/{your_initials}`
 
-   * File Name: **{your-initials}**_employee_api_spec
+6. Hit **Save** on the top right.
 
-   * URL: [http://playground.apistudio.io/070cde0a-44f7-4e2c-8085-6e1020db7baf/spec](http://playground.apistudio.io/070cde0a-44f7-4e2c-8085-6e1020db7baf/spec)
+   * File Name: **{your-initials}**_litmos_api_spec
 
-![image alt text](./media/image_2.png)
-
-5. Verify the values and click **Import**. Spec has been imported into Apigee Edge & Ready to use. You should see your spec in the list. For example,
-
-![image alt text](./media/image_3.png)
-
-6. Click on **{your-initials}**_employee_api_spec from the list to access Open API spec editor & interactive documentation that lists API details & API Resources.
-
-![image alt text](./media/image_4.png)
+7. Click on **{your-initials}**_litmos_api_spec from the list to access Open API spec editor & interactive documentation that lists API details & API Resources.
 
 ## Create an API Proxy
 
@@ -65,9 +51,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ![image alt text](./media/image_7.png)
 
-4. You should see a popup with list of Specs. Select **{your-initials}**_employee_api_spec and click **Select.** 
-
-![image alt text](./media/image_8.png)
+4. You should see a popup with list of Specs. Select **{your-initials}**_litmos_api_spec and click **Select.** 
 
 5. You can see the selected OpenAPI Spec URL below the Reverse Proxy option, Click **Next** to continue.
 
@@ -75,19 +59,16 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 6. Enter details in the proxy wizard. Replace **{your-initials}** with the initials of your name. 
 
-    * Proxy Name: **{your_initials}**_employee_proxy
+    * Proxy Name: `{your_initials}_user_proxy`
 
-    * Proxy Base Path: /v1/**{your_initials}**_employee_proxy
+    * Proxy Base Path: `/v1/{your_initials}/users`
 
-    * Existing API: Observe the field value which is auto filled from OpenAPI Spec.
+    * Existing API: `https://apibeta.litmos.com/v1.svc/users`
 
-![image alt text](./media/image_10.png)
 
 7. Verify the values and click **Next**.
 
-8. You can select, de-select list of API Proxy Resources that are pre-filled from OpenAPI Spec. Select all & Click on **Next**
-
-![image alt text](./media/image_11.png)
+8. You can select, de-select list of API Proxy Resources that are pre-filled from OpenAPI Spec. Select only the `users` APIs & Click on **Next**.
 
 9. Select **Pass through (none)** for the authorization in order to choose not to apply any security policy for the proxy. Click Next. 
 
@@ -97,31 +78,50 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ![image alt text](./media/image_13.jpg)
 
-11. Ensure that only the **test** environment is selected to deploy to and click **Build and Deploy** 
-
-![image alt text](./media/image_14.jpg)
+11. Ensure that only the **test** environment is selected to deploy to and click **Build and Deploy**
 
 12. Once the API proxy is built and deployed **click** the link to view your proxy in the proxy editor. 
-
-![image alt text](./media/image_15.png)
 
 13. *Congratulations!* ...You have now built a reverse proxy for an existing backend service. You should see the proxy **Overview** screen.
 
 ![image alt text](./media/image_16.png)
 
+# Part B - Perform API Traffic Mediation
+## Add query params to the request
+1. Click on the **Postflow**. We will add a new `Assign Message` policy here to add three query params necessary for our backend.
+
+2. Click on the **+** icon to the right in the request flow. From the list, click on the `Assign Message` policy. Name it **Add-Identification**.
+
+3. Replace the policy configuration with the following:
+```
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="Add-Identification">
+    <DisplayName>Add-Identification</DisplayName>
+    <Properties/>
+    <Add>
+        <QueryParams>
+            <QueryParam name="apikey">4F1D0552-A887-427A-904D-7F08D94CDF05</QueryParam>
+            <QueryParam name="source">googletest</QueryParam>
+            <QueryParam name="format">json</QueryParam>
+        </QueryParams>
+    </Add>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
+```
+
+4. Click **save** on the top left to save the proxy. You have just made a fully working API Proxy!
+
 ## Test the API Proxy
-1. Let us test the newly built API proxy using the [REST Client](https://apigee-rest-client.appspot.com/). Open the REST Client on a new browser window.  
+1. Click on the **`Trace`** button on the top right of the proxy editor.
 
-2. Copy the URL for your API proxy. 
+2. It should automatically paste the url of your proxy in the text field. If not, use the url `https://apijams-amer-10-test.apigee.net/v1/{your_initials}/users`
 
-![image alt text](./media/image_17.png)
+3. Click on the **Trace** button to start tracing calls.
 
-3. Paste the link into the REST Client and make a GET call
+4. Hit **Send**.
 
-![image alt text](./media/image_18.png)
-
-4. You should see a success response similar to this -
-![image alt text](./media/image_19.jpg)
+5. Inspect the trace on the screen.
 
 ## Save the API Proxy
 
@@ -130,14 +130,6 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 2. Save the API Proxy by downloading the proxy bundle, See screenshot below for instructions.
 
 ![image alt text](./media/image_20.png)
-
-# Lab Video
-
-If you like to learn by watching, here is a short video on creating a reverse proxy using Open API Specification - [https://www.youtube.com/watch?v=3XBG9QOUPzg](https://www.youtube.com/watch?v=3XBG9QOUPzg) 
-
-# Earn Extra-points
-
-Now that you have created a reverse proxy using OpenAPI spec, Click on the Develop tab & explore the flow conditions populated from OpenAPI spec. Also, Explore OpenAPI Spec editor using which you can edit OpenAPI specification & Generate API Proxy using the link above the OpenAPI Spec editor. Explore trace tab in Proxy overview page.
 
 # Quiz
 

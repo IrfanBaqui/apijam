@@ -16,41 +16,17 @@ In addition to authenticating requests, the [Verify API Key Policy](http://docs.
 
 In this lab, you will protect an existing API Proxy with the [Verify API Key Policy](http://docs.apigee.com/api-services/reference/verify-api-key-policy) and use the trace tool to see the policy in action.  To accomplish this you will modify an existing API Proxy to add a security policy to handle the authorization.  
 
-# Pre-requisites
-
-For this lab, you will need an API Proxy that is not currently secured.  If you do not have an API Proxy available for this lab, revisit the lab "API Design : Create a Reverse Proxy from OpenAPI Spec" and then return here to complete these steps.
-
 # Instructions
 
-## Choose (and invoke) an API Proxy to secure
-
-* Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI
-
-* Select **Develop → API Proxies**
-
-![image alt text](./media/navigate_to_proxies.png)
-
-* Select the **{your_initials}**_mock_target_proxy that you created in an earlier lab exercise.
-
-![image alt text](./media/navigate_to_proxy.png)
-
-* Verify that the API Proxy is deployed to an environment from the **Overview** page.  Environment(s) to which the selected revision of the API Proxy is deployed will be indicated by a green circle.  If it is not deployed, click an environment from the "Deployment" pull-down to deploy the API Proxy to that environment.
-
- ![image alt text](./media/overview_proxy.png)
-
-* Verify that you can successfully make calls using the built-in trace tool.
-
-* Click the **Trace** tab near the top of the window.
-
-* The Trace view allows you to initiate tracing for up to 10 minutes, during which time all requests (regardless of whether they are sent from the trace tool or any other client) will be captured and their traces made visible to you.
+## Invoke an API Proxy to secure
 
 * Click **Start Trace Session** to begin a trace session.
 
-* Click **Send** to send a request.  If your API Proxy requires query parameters add them here prior to sending.
+* Click **Send** to send a request.
 
-* You should see a successful 2xx response for your API Call (it may take a few seconds for the trace results to appear)
+* You should see a successful 2xx response for your API Call.
 
-* If you are not able to successfully test an API Proxy in the Trace Tool, revisit the lab "API Design : Create a Reverse Proxy from OpenAPI Spec"
+* This means that this API is open to the entire world to use. We'd rather only expose it to our limited consumers. Let's do that using the `Verify API Key` policy.
 
 ## Add a Verify API Key Policy
 
@@ -58,13 +34,13 @@ For this lab, you will need an API Proxy that is not currently secured.  If you 
 
 * Open your API Proxy and click the **Develop** tab (in the upper right area of the page) to see the flow editor (you may have to move the panes to see the full request and response flow lines)
 
-* Click **+Step** on the request flow and select *Verify API Key* policy from the *Security* section of the list.  The name can be changed or left at the default.
+* Click on **Preflow**. Then Click **+ Step** on the request flow and select *Verify API Key* policy from the *Security* section of the list.  The name can be changed or left at the default.
 
 * Click **Add**
 
 * The policy will be added after any policies you previously had in the Request flow.  Since we likely want this to occur first, drag the new policy to be the leftmost.
 
-* With the *Verify API Key* policy selected, you can see its configuration (the default policy configuration is below).  Note that the API Key is being retrieved from the context as the variable *request.queryparam.apikey*.  This is the default but the policy can be configured to retrieve the key from any parameter key you prefer.
+* With the *Verify API Key* policy selected, you can see its configuration (the default policy configuration is below).  Note that the API Key is being retrieved from the context as the variable *request.queryparam.apikey*.  This is the default but the policy can be configured to retrieve the key from any request parameter key you prefer, such as header or body.
 
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -89,10 +65,6 @@ For this lab, you will need an API Proxy that is not currently secured.  If you 
 
 ![image alt text](./media/trace.png)
 
-# Lab Video
-
-If you would rather watch a video that covers this topic, point your browser [here](https://youtu.be/3nUFCOgGlS8). (note: you only need to watch until the 3:00 minute mark for this specific lab).
-
 # Quiz
 
 1. Why is the Verify API Key policy typically found as the first policy in the Request PreFlow?  When might it be in a conditional PreFlow instead of the "All" PreFlow?
@@ -108,7 +80,3 @@ In this lab you learned how to protect your API Proxy using the Verify API Key p
 * Link to Apigee docs page
 
     * Verify Api Key Policy [http://docs.apigee.com/api-services/reference/verify-api-key-policy](http://docs.apigee.com/api-services/reference/verify-api-key-policy)
-
-# Next Lab
-
-Now go to [Lab-5](../Lab%205%20API%20Publishing%20-%20API%20Products%20and%20Developer%20Portals)

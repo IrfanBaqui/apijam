@@ -20,26 +20,8 @@ In this lab we will see how to use an out of the box traffic management policy, 
 
 # Instructions
 
-## Verify Created Proxy
-
-1. Select the proxy you created in Lab 1, and click on the Trace tab on the upper right corner
-
-![image alt text](./media/image_7.png)
-
-* Click on the **Start Trace Session** button and then click on the **Send** button to send traffic to your new proxy. You should see transactions appear on the left hand pane as requests are sent to your proxy.
-
-![image alt text](./media/image_8.png)
-
 ## Add Rate Limiting to the API Proxy
-1. Select **Develop → API Proxies** in the side navigation menu.
-
-![image alt text](./media/image_0.png)
-
-2. Click on the **Employees** proxy that you created earlier.
-
-![image alt text](./media/image_5.png)
-
-3. Click on the **Develop** tab to access the API Proxy development dashboard.
+1. Click on the **Develop** tab to access the API Proxy development dashboard.
 
 ![image alt text](./media/image_9.png)
 
@@ -94,17 +76,11 @@ What actually happens, then? To prevent spike-like behavior, Spike Arrest smooth
 
 2. Click on **Start Trace Session** to see API Proxy with spike arrest in action.
 
-![image alt text](./media/image_11.png)
-
 3. Click on **Send** button multiple times, you will see a 429 response code (or 500 on older instances)  when spike arrest policy kicks in to protect target servers from spike in traffic.
 
 ![image alt text](./media/image_14.png)
 
 4. You might notice that number of requests with 200 response is more than spike arrest rate value configured, It’s due to multiple message processors where policies gets executed and each has individual counters.
-
-# Lab Video
-
-If you like to learn by watching, here is a short video on using Spike Arrest policy. [https://youtu.be/3Gi-GGTqllg](https://youtu.be/3Gi-GGTqllg)
 
 # Earn Extra-points
 
@@ -139,8 +115,4 @@ That completes this hands-on lesson. In this simple lab you learned how to prote
 
     * Rate Limiting - [http://docs.apigee.com/api-services/content/rate-limiting](http://docs.apigee.com/api-services/content/rate-limiting)
 
-    * Comparing Rate Limiting Policies - [http://docs.apigee.com/api-services/content/comparing-quota-spike-arrest-and-concurrent-rate-limit-policies](http://docs.apigee.com/api-services/content/comparing-quota-spike-arrest-and-concurrent-rate-limit-policies) 
-
-# Next Lab
-
-Now go to [Lab-3](../Lab%203%20API%20Diagnostics%20-%20Trace%20tool)
+    * Comparing Rate Limiting Policies - [http://docs.apigee.com/api-services/content/comparing-quota-spike-arrest-and-concurrent-rate-limit-policies](http://docs.apigee.com/api-services/content/comparing-quota-spike-arrest-and-concurrent-rate-limit-policies)

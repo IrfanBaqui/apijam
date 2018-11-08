@@ -14,10 +14,6 @@ Apigee Edge has out of the box lightweight Developer Portal which allows API Tea
 
 In this lab, we will see how to register as an App Developer, navigate through API documentation, create app in the Developer Portal to access API keys, test the APIs using the keys we got from Developer Portal.
 
-# Pre-requisites
-
-*API Security* and *API Publishing* lab exercises. 
-
 # Instructions
 
 * Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
@@ -82,7 +78,7 @@ Typically, developers who want to consume APIs go to developer portal and regist
 
 ![image alt text](./media/image_14.png)
 
-* Click on **{your_intial}-employee-app** to access App Details.
+* Click on the app you just created to access App Details.
 
 ![image alt text](./media/image_15.png)
 
@@ -98,7 +94,7 @@ Typically, developers who want to consume APIs go to developer portal and regist
 
 ![image alt text](./media/image_18.png)
 
-* From the main Apigee UI (not the Developer Portal), go back to the Employee API you've already created and click the **Trace** tab in the upper right.
+* From the main Apigee UI (not the Developer Portal), go back to the Litmos API Proxy you've already created and click the **Trace** tab in the upper right.
 
 * Click **Start Trace Session** to begin a trace session.
 
@@ -111,10 +107,6 @@ Typically, developers who want to consume APIs go to developer portal and regist
    You should see a 2xx response code and the Trace for that request should show that the Verify API Key policy is now            passing.
 
 ![image alt text](./media/image_19.png)
-
-# Lab Video
-
-If you like to learn by watching, here is a short video on consuming APIs using Apigee Developer Portal [https://youtu.be/nCJwlVF6waw](https://youtu.be/nCJwlVF6waw)
 
 # Earn Extra-points
 
