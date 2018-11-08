@@ -50,6 +50,7 @@ In this lab, you will protect an existing API Proxy with the [Verify API Key Pol
     <APIKey ref="request.queryparam.apikey"/>
 </VerifyAPIKey>
 ```
+* Drag the API-Key policy to the left of the Spike Arrest policy such that it's the first one to execute.
 
 * **Save** the API Proxy.
 

@@ -90,7 +90,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 ## Add query params to the request
 1. Click on the **Postflow**. We will add a new `Assign Message` policy here to add three query params necessary for our backend.
 
-2. Click on the **+** icon to the right in the request flow. From the list, click on the `Assign Message` policy. Name it **Add-Identification**.
+2. Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Assign Message` policy. Name it **Add-Identification**.
 
 3. Replace the policy configuration with the following:
 ```
