@@ -94,7 +94,7 @@ Typically, developers who want to consume APIs go to developer portal and regist
 
 ![image alt text](./media/image_18.png)
 
-* From the main Apigee UI (not the Developer Portal), go back to the Litmos API Proxy you've already created and click the **Trace** tab in the upper right.
+* From the main Apigee UI (not the Developer Portal), go back to the API Proxy you've already created and click the **Trace** tab in the upper right.
 
 * Click **Start Trace Session** to begin a trace session.
 

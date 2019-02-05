@@ -68,7 +68,7 @@ In this lab, you will create a custom report to provide insight into the consump
 
 9. You can further narrow the data displayed by adding filters to your report definition. 
 In the **Filter** section of the page, click **+Filter Condition**. 
-Select **Proxy** as the entity you want to filter on, select **=** as the **Operator** and set the **Value** to your API Proxy name (e.g. "ap_litmos").
+Select **Proxy** as the entity you want to filter on, select **=** as the **Operator** and set the **Value** to your API Proxy name.
 
 ![image alt text](./media/image_8.png)
 

@@ -24,7 +24,7 @@ Note: As you will have already completed Labs 1 - 5 and are familiar with how to
 
 * Login to Edge Management UI.
 
-* Open up the **Develop** tab of your Litmos API that you've used in the previous labs.
+* Open up the **Develop** tab of your API that you've used in the previous labs.
 
 * In the proxy request pre-flow add a **Quota policy** directly after the *Verify API Key Policy* with the following configuration (note that in the below configuration ‘Verify-API-Key-1’ refers to the name of the Verify API Key policy that you had added. If you used a different name you will need to alter this in the configuration):
 
@@ -46,7 +46,7 @@ Note: As you will have already completed Labs 1 - 5 and are familiar with how to
 
 ![image alt text](./media/image_0.png)
 
-* Create 2 new API Products that include this proxy, ‘**{your_initials}**_Litmos Bronze Product’ and ‘**{your_initials}**_Litmos Platinum Product’ (refer back to Lab-4 if you don't remember how to create an API Product)
+* Create 2 new API Products that include this proxy, ‘**{your_initials}**_Yodlee Bronze Product’ and ‘**{your_initials}**_Yodlee Platinum Product’ (refer back to Lab-4 if you don't remember how to create an API Product)
 
 For both products specify as before:
 

@@ -38,7 +38,7 @@ API Products (which contain API Proxies) are the unit of deployment to the Devel
 
             * Click the **+API Proxy** button
 
-            * Select your Litmos API Proxy.
+            * Select your API Proxy.
 
             * Resources: `/`
 
@@ -48,7 +48,7 @@ API Products (which contain API Proxies) are the unit of deployment to the Devel
 
             * Click the **+API Proxy** button
 
-            * Select your Litmos API Proxy.
+            * Select your API Proxy.
 
             * Resources: **`/**`**
 

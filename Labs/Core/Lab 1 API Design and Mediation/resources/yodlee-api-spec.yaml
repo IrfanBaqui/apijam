@@ -1,0 +1,202 @@
+swagger: "2.0"
+info:
+  description: "Envestnet | Yodlee API (“Yodlee API”) is a flexible RESTful API that allows developers to access personal financial data from the Envestnet | Yodlee financial data platform that can be used to develop various financial management applications. Yodlee API 1.1 is designed to work with FastLink 3.0."
+  version: "1.0.0"
+  title: "Yodlee API Portal"
+  termsOfService: "https://www.yodlee.com/legal/privacy-notice"
+  contact:
+    email: "apiteam@yodlee.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "apijams-amer-8-test.apigee.net"
+basePath: "/v1/ib"
+tags:
+- name: "users"
+  description: "Everything about your Users"
+- name: "accounts"
+  description: "Access to user accounts"
+- name: "courses"
+  description: "Operations on your courses"
+schemes:
+- "https"
+- "http"
+paths:
+  /accounts:
+    post:
+      tags:
+      - "accounts"
+      summary: "Add Manual Account"
+      description: "Creates a account for the user."
+      operationId: "addAccount"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "user"
+        in: "query"
+        description: "ID of user"
+        required: true
+        type: "string"
+        format: "utf-8"
+      - in: "body"
+        name: "body"
+        description: "User detail object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        405:
+          description: "Invalid input"
+      security:
+      - oAuth:
+        - "admin"
+    get:
+      tags:
+      - "accounts"
+      summary: "Get Accounts"
+      description: "Returns a list of accounts for the user."
+      operationId: "getAllAccounts"
+      parameters:
+      - name: "user"
+        in: "query"
+        description: "ID of user"
+        required: true
+        type: "string"
+        format: "utf-8"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid input"
+      security:
+      - oAuth:
+        - "admin"
+        - "viewer"
+      - api_key: []
+  /accounts/{id}:
+    get:
+      tags:
+      - "accounts"
+      summary: "Get account details"
+      description: "Creates a account for the user."
+      operationId: "getAccount"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user"
+        in: "query"
+        description: "ID of user"
+        required: true
+        type: "string"
+        format: "utf-8"
+      - name: "id"
+        in: "path"
+        description: "ID of account to return"
+        required: true
+        type: "string"
+        format: "utf-8"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid input"
+      security:
+      - oAuth:
+        - "admin"
+        - "viewer"
+      - api_key: []
+  /users/{userId}:
+    get:
+      tags:
+      - "users"
+      summary: "Finds User by ID"
+      description: "Returns a single user profile for the given user ID."
+      operationId: "findUserByID"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of user to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+      security:
+      - oAuth:
+        - "admin"
+        - "viewer"
+      - api_key: []
+    delete:
+      tags:
+      - "users"
+      summary: "Delete user by ID"
+      description: "Delete a single user profile in your organisation.  The user will be deleted completely from the system."
+      operationId: "deleteUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of user to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "User not found"
+      security:
+      - oAuth:
+        - "admin"
+        - "viewer"
+      - api_key: []
+securityDefinitions:
+  oAuth:
+    type: "oauth2"
+    authorizationUrl: "apijams-amer-8-test.apigee.net/oauth/client-credentials"
+    flow: "implicit"
+    scopes:
+      admin: "full read/write access to the data"
+      viewer: "only read access to the data"
+  api_key:
+    type: "apiKey"
+    name: "apikey"
+    in: "query"
+definitions:
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      username:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+    xml:
+      name: "User"
+externalDocs:
+  description: "Find out more about Yodlee"
+  url: "https://developer.yodlee.com"

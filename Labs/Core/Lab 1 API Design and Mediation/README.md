@@ -27,15 +27,15 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 3. Click **+Spec.** Click on **New** to add a new spec from the UI.
 
-4. Copy the spec details from [here](./resources/litmos-api-spec.yaml) and paste it on the left pane. 
+4. Copy the spec details from [here](./resources/yodlee-api-spec.yaml) and paste it on the left pane. 
 
 5. Edit the **basePath** from `/v1` to `/v1/{your_initials}`
 
 6. Hit **Save** on the top right.
 
-   * File Name: **{your-initials}**_litmos_api_spec
+   * File Name: **{your-initials}**_yodlee_api_spec
 
-7. Click on **{your-initials}**_litmos_api_spec from the list to access Open API spec editor & interactive documentation that lists API details & API Resources.
+7. Click on **{your-initials}**_yodlee_api_spec from the list to access Open API spec editor & interactive documentation that lists API details & API Resources.
 
 ## Create an API Proxy
 
@@ -51,7 +51,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ![image alt text](./media/image_7.png)
 
-4. You should see a popup with list of Specs. Select **{your-initials}**_litmos_api_spec and click **Select.** 
+4. You should see a popup with list of Specs. Select **{your-initials}**_yodlee_api_spec and click **Select.** 
 
 5. You can see the selected OpenAPI Spec URL below the Reverse Proxy option, Click **Next** to continue.
 
@@ -59,16 +59,16 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 6. Enter details in the proxy wizard. Replace **{your-initials}** with the initials of your name. 
 
-    * Proxy Name: `{your_initials}_user_proxy`
+    * Proxy Name: `{your_initials}_accounts_proxy`
 
-    * Proxy Base Path: `/v1/{your_initials}/users`
+    * Proxy Base Path: `/v1/{your_initials}/accounts`
 
-    * Existing API: `https://apibeta.litmos.com/v1.svc/users`
+    * Existing API: `https://sandbox.api.yodlee.com/ysl/accounts`
 
 
 7. Verify the values and click **Next**.
 
-8. You can select, de-select list of API Proxy Resources that are pre-filled from OpenAPI Spec. Select only the `users` APIs & Click on **Next**.
+8. You can select, de-select list of API Proxy Resources that are pre-filled from OpenAPI Spec. Select only the `accounts` APIs & Click on **Next**.
 
 9. Select **Pass through (none)** for the authorization in order to choose not to apply any security policy for the proxy. Click Next. 
 
@@ -88,34 +88,127 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 # Part B - Perform API Traffic Mediation
 ## Add query params to the request
-1. Click on the **Postflow**. We will add a new `Assign Message` policy here to add three query params necessary for our backend.
+1. Click on the **Preflow** under Proxy endpoints. We will add a new `Extract Variables` policy here to parse out the username coming in the request.
 
-2. Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Assign Message` policy. Name it **Add-Identification**.
+2. Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Extract Variables` policy. Name it **get-username**.
 
 3. Replace the policy configuration with the following:
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage async="false" continueOnError="false" enabled="true" name="Add-Identification">
-    <DisplayName>Add-Identification</DisplayName>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="get-username">
+    <DisplayName>get-username</DisplayName>
     <Properties/>
-    <Add>
-        <QueryParams>
-            <QueryParam name="apikey">4F1D0552-A887-427A-904D-7F08D94CDF05</QueryParam>
-            <QueryParam name="source">googletest</QueryParam>
-            <QueryParam name="format">json</QueryParam>
-        </QueryParams>
-    </Add>
-    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    <AssignTo createNew="false" transport="http" type="request"/>
-</AssignMessage>
+    <URIPath name="name"/>
+    <QueryParam name="user">
+        <Pattern ignoreCase="true">{username}</Pattern>
+    </QueryParam>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Source clearPayload="false">request</Source>
+</ExtractVariables>
 ```
 
-4. Click **save** on the top left to save the proxy. You have just made a fully working API Proxy!
+4. Now let's also create an error handler in case the request doesn't contain a username. Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Raise Fault` policy. Name it **verify-user**. Then replace its configuration with the following:
+```
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="verify-user">
+    <DisplayName>verify-user</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="text/plain"/>
+            <StatusCode>400</StatusCode>
+            <ReasonPhrase>Please provide the username in the "user" queryparam</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>
+```
+
+5. Finally, navigate to the `Endpoint Default` tab in the editor, and add a condition for the Raise Fault policy that you just created. Replace the existing step with the following:
+    ```
+    ...
+    <Step>
+        <Name>verify-user</Name>
+        <Condition>(username == null)</Condition>
+    </Step>
+    ...
+    ```
+
+6. Next, let's configure how we would interact with the backend. The Yodlee API requires a JWT, so let's call a shared flow that will handle creating JWT tokens for us. 
+
+    Click on the **Preflow** under **Target** endpoints. We will add a new `Flow Callout` policy here to execute logic in a shared flow that will create a JWT token for us.
+
+    Name it **generate-token**. Then replace its configuration with the following:
+    ```
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <FlowCallout async="false" continueOnError="false" enabled="true" name="generate-token">
+        <DisplayName>generate-token</DisplayName>
+        <FaultRules/>
+        <Properties/>
+        <SharedFlowBundle>generate-jwt-token</SharedFlowBundle>
+    </FlowCallout>
+    ```
+
+7. The backend also requires an Authorization headers with the JWT and a version header. Let's add both the headers next. 
+
+    Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Assign Message` policy. Name it **set-headers**. Then replace its configuration with the following:
+
+    ```
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <AssignMessage async="false" continueOnError="false" enabled="true" name="add-headers">
+        <DisplayName>add-headers</DisplayName>
+        <Properties/>
+        <Add>
+            <Headers>
+                <Header name="Authorization">Bearer {jwt-token}</Header>
+                <Header name="Api-Version">1.1</Header>
+            </Headers>
+        </Add>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+        <AssignTo createNew="false" transport="http" type="request"/>
+    </AssignMessage>
+    ```
+
+8. Navigate to the shared flow that you added in step 6. You will notice that it caches the JWT for 14 minutes. So, instead of creating a new JWT each time, let's get it from the cache.
+        
+    Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Lookup Cache` policy. Name it **get-token**. Then replace its configuration with the following:
+
+    ```
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <LookupCache async="false" continueOnError="false" enabled="true" name="get-token">
+        <DisplayName>get-token</DisplayName>
+        <Properties/>
+        <CacheKey>
+            <Prefix>userkey</Prefix>
+            <KeyFragment ref="username"/>
+        </CacheKey>
+        <Scope>Global</Scope>
+        <AssignTo>jwt-token</AssignTo>
+    </LookupCache>
+    ```
+
+    Now drag the policy all the way to the left. This is because you want to check the cache before invoking the flow callout.
+
+9. Finally, let's add a condition to the `generate token` step so that we only invoke it when our cache is empty.
+
+    Navigate to the `Endpoint Default` tab in the editor after selecting `preflow` in the default `target endpoint`, and add a condition for the Flow Callout policy. Replace the existing step with the following:
+    
+    ```
+    ...
+        <Step>
+            <Name>generate-token</Name>
+            <Condition>(jwt-token == null)</Condition>
+        </Step>
+    ...
+    ```
+
+6. Click **save** on the top left to save the proxy. You have just made a fully working API Proxy!
 
 ## Test the API Proxy
 1. Click on the **`Trace`** button on the top right of the proxy editor.
 
-2. It should automatically paste the url of your proxy in the text field. If not, use the url `https://apijams-amer-10-test.apigee.net/v1/{your_initials}/users`
+2. It should automatically paste the url of your proxy in the text field. If not, use the url `https://apijams-amer-8-test.apigee.net/v1/{your_initials}/accounts?user=sbMem5c44dadc7f7ea2`
 
 3. Click on the **Trace** button to start tracing calls.
 
