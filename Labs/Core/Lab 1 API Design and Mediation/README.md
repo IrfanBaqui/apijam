@@ -152,7 +152,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 7. The backend also requires an Authorization headers with the JWT and a version header. Let's add both the headers next. 
 
-    Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Assign Message` policy. Name it **set-headers**. Then replace its configuration with the following:
+    Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Assign Message` policy. Name it **add-headers**. Then replace its configuration with the following:
 
     ```
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
