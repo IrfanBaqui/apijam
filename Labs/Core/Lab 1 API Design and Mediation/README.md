@@ -1,6 +1,6 @@
 # API Design : Create a Reverse Proxy with OpenAPI Specification
 
-*Duration : 20 mins*
+*Duration : 1 hour*
 
 *Persona : API Team*
 
