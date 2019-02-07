@@ -61,9 +61,9 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
     * Proxy Name: `{your_initials}_accounts_proxy`
 
-    * Proxy Base Path: `/v1/{your_initials}/accounts`
+    * Proxy Base Path: `/v1/{your_initials}`
 
-    * Existing API: `https://sandbox.api.yodlee.com/ysl/accounts`
+    * Existing API: `https://sandbox.api.yodlee.com/ysl`
 
 
 7. Verify the values and click **Next**.
@@ -87,59 +87,40 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 ![image alt text](./media/image_16.png)
 
 # Part B - Perform API Traffic Mediation
-## Add query params to the request
+## Extract user information from request
+When a user request comes in, we need to identify the user. Let's say they pass in their username as a queryparam and implement a policy to extract the username.
+
 1. Click on the **Preflow** under Proxy endpoints. We will add a new `Extract Variables` policy here to parse out the username coming in the request.
 
 2. Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Extract Variables` policy. Name it **get-username**.
 
 3. Replace the policy configuration with the following:
-```
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ExtractVariables async="false" continueOnError="false" enabled="true" name="get-username">
-    <DisplayName>get-username</DisplayName>
-    <Properties/>
-    <URIPath name="name"/>
-    <QueryParam name="user">
-        <Pattern ignoreCase="true">{username}</Pattern>
-    </QueryParam>
-    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
-    <Source clearPayload="false">request</Source>
-</ExtractVariables>
-```
-
-4. Now let's also create an error handler in case the request doesn't contain a username. Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Raise Fault` policy. Name it **verify-user**. Then replace its configuration with the following:
-```
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<RaiseFault async="false" continueOnError="false" enabled="true" name="verify-user">
-    <DisplayName>verify-user</DisplayName>
-    <Properties/>
-    <FaultResponse>
-        <Set>
-            <Headers/>
-            <Payload contentType="text/plain"/>
-            <StatusCode>400</StatusCode>
-            <ReasonPhrase>Please provide the username in the "user" queryparam</ReasonPhrase>
-        </Set>
-    </FaultResponse>
-    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-</RaiseFault>
-```
-
-5. Finally, navigate to the `Endpoint Default` tab in the editor, and add a condition for the Raise Fault policy that you just created. Replace the existing step with the following:
     ```
-    ...
-    <Step>
-        <Name>verify-user</Name>
-        <Condition>(username == null)</Condition>
-    </Step>
-    ...
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <ExtractVariables async="false" continueOnError="false" enabled="true" name="get-username">
+        <DisplayName>get-username</DisplayName>
+        <Properties/>
+        <URIPath name="name"/>
+        <QueryParam name="user">
+            <Pattern ignoreCase="true">{username}</Pattern>
+        </QueryParam>
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+        <Source clearPayload="false">request</Source>
+    </ExtractVariables>
     ```
 
-6. Next, let's configure how we would interact with the backend. The Yodlee API requires a JWT, so let's call a shared flow that will handle creating JWT tokens for us. 
+    ![image alt text](./media/image_21.png)
 
-    Click on the **Preflow** under **Target** endpoints. We will add a new `Flow Callout` policy here to execute logic in a shared flow that will create a JWT token for us.
+4. Save your work.
 
-    Name it **generate-token**. Then replace its configuration with the following:
+# Part C - Authentication with Yodlee, Token Orchestration and Shared Flows
+Next, let's configure the **getAllAccounts** route. The Yodlee API requires a JWT, so let's call a shared flow that will handle creating JWT tokens for us. 
+
+1. Click on the **getAllAccounts** route under **Proxy Endpoints**. We will add a new `Flow Callout` policy here to execute logic in a shared flow that will create a JWT token for us.
+
+    Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Flow Callout` policy.
+
+    Name it **generate-token**. In the **Shared Flow** drop down, select `generate-jwt-token`. Then replace its configuration with the following:
     ```
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <FlowCallout async="false" continueOnError="false" enabled="true" name="generate-token">
@@ -150,9 +131,11 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
     </FlowCallout>
     ```
 
-7. The backend also requires an Authorization headers with the JWT and a version header. Let's add both the headers next. 
+    Here, we are calling a shared flow that generates a JWT token for us. Try to find and inspect that shared flow.
 
-    Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Assign Message` policy. Name it **add-headers**. Then replace its configuration with the following:
+2. The backend also requires an Authorization headers with the JWT and a version header. Let's add both the headers next. 
+
+    On the **getAllAccounts** route, click on the **+ Step** icon to the right in the request flow. From the list, click on the `Assign Message` policy. Name it **add-headers**. Then replace its configuration with the following:
 
     ```
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -170,9 +153,13 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
     </AssignMessage>
     ```
 
-8. Navigate to the shared flow that you added in step 6. You will notice that it caches the JWT for 14 minutes. So, instead of creating a new JWT each time, let's get it from the cache.
+    ![image alt text](./media/image_22.png)
+
+# Part D - Cacheing
+
+1. Navigate to the shared flow that you added in Part C. You will notice that it caches the JWT for 14 minutes. So, instead of creating a new JWT each time, let's get it from the cache.
         
-    Click on the **+ Step** icon to the right in the request flow. From the list, click on the `Lookup Cache` policy. Name it **get-token**. Then replace its configuration with the following:
+    On the **getAllAccounts** route, click on the **+ Step** icon to the right in the request flow. From the list, click on the `Lookup Cache` policy. Name it **get-token**. Then replace its configuration with the following:
 
     ```
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -190,7 +177,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
     Now drag the policy all the way to the left. This is because you want to check the cache before invoking the flow callout.
 
-9. Finally, let's add a condition to the `generate token` step so that we only invoke it when our cache is empty.
+2. Finally, let's add a condition to the `generate token` step so that we only invoke it when our cache is empty.
 
     Navigate to the `Endpoint Default` tab in the editor after selecting `preflow` in the default `target endpoint`, and add a condition for the Flow Callout policy. Replace the existing step with the following:
     
@@ -203,7 +190,45 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
     ...
     ```
 
-6. Click **save** on the top left to save the proxy. You have just made a fully working API Proxy!
+    ![image alt text](./media/image_23.png)
+
+5. Click **save** on the top left to save the proxy. You have just made a fully working API Proxy!
+
+
+# Part E - Error Handling
+1. Now let's also create an error handler in case the request doesn't contain a username. 
+
+    Click on the **Preflow** under Proxy endpoints. Then click on the **+ Step** icon to the right in the request **preflow**. From the list, click on the `Raise Fault` policy. Name it **verify-user**. Then replace its configuration with the following:
+    ```
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <RaiseFault async="false" continueOnError="false" enabled="true" name="verify-user">
+        <DisplayName>verify-user</DisplayName>
+        <Properties/>
+        <FaultResponse>
+            <Set>
+                <Headers/>
+                <Payload contentType="text/plain"/>
+                <StatusCode>400</StatusCode>
+                <ReasonPhrase>Please provide the username in the "user" queryparam</ReasonPhrase>
+            </Set>
+        </FaultResponse>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    </RaiseFault>
+    ```
+
+2. Finally, navigate to the `Endpoint Default` tab in the editor, and add a condition for the Raise Fault policy that you just created. Replace the existing step with the following:
+    ```
+    ...
+    <Step>
+        <Name>verify-user</Name>
+        <Condition>(username == null)</Condition>
+    </Step>
+    ...
+    ```
+
+    ![image alt text](./media/image_24.png)
+
+
 
 ## Test the API Proxy
 1. Click on the **`Trace`** button on the top right of the proxy editor.
