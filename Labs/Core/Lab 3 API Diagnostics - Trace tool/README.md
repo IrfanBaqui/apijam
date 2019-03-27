@@ -22,13 +22,13 @@ You have an API proxy created in Apigee Edge. If not, jump back to the "Create R
 
 ## Configure API Proxy
 
-1. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
+1. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI.
 
 2. Select **Develop → API Proxies** in the side navigation menu
 
 ![image alt text](./media/image_0.jpg)
 
-3. Select the **{your_initials}_employee_proxy** that you created in an earlier lab exercise.	
+3. Select the **{your_initials}_employee_proxy** that you created in an earlier lab exercise.
 
 ![image alt text](./media/image_1.png)
 
@@ -46,7 +46,7 @@ Note: The Extract Variables policy icon is visible on the request flow and shows
 
 7. Change the Policy XML configuration to match the code below.  Doing so will "teach" your proxy to extract your initials from a query parameter in the API request.
 
-**Note**: In the following snippet, the Pattern value that reads *{my_initials}* is referencing a variable in your API proxy called *my_initials*, **you do not need to replace this with your initials**. 
+**Note**: In the following snippet, the Pattern value that reads *{my_initials}* is referencing a variable in your API proxy called *my_initials*, **you do not need to replace this with your initials**.
 
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -59,7 +59,7 @@ Note: The Extract Variables policy icon is visible on the request flow and shows
 </ExtractVariables>
 ```
 
-8. Click on **Save**. It may prompt to create a new revision. If it does, then click on *Save as new Revision*, and then **Deploy** the new revision to *test* environment. 
+8. Click on **Save**. It may prompt to create a new revision. If it does, then click on *Save as new Revision*, and then **Deploy** the new revision to *test* environment.
 
 ![image alt text](./media/image_4.png)
 
@@ -84,13 +84,17 @@ Consider a scenario where one of your API consumers reports seeing 404 errors in
 
 4. Click the green **Start Trace Session** button, then click **Send**. Note a trace log is captured, with a 404 response.  
 
+![image alt text](./media/image_11a.png)
+
 5. Step through the visualization, clicking points of interest along the request/response flow and taking note of the metadata provided at the bottom of the screen.
 
-	**Trace-Step 1:** Extract Variables Policy
+  **Trace-Step 1:** Quota Policy
 
-	**Trace-Step 2:** Request sent to target
+	**Trace-Step 2:** Extract Variables Policy
 
-	**Trace-Step 3:** Response returned from target
+	**Trace-Step 3:** Request sent to target
+
+	**Trace-Step 4:** Response returned from target
 
 *Congratulations!*  You’ve found the problem.  Your target service cannot find an entity with the ID provided (7ed25ec5-c89f-11e6-861b-0ad881f403bfaaa).  This is a trivial example, but you can see how the tool -- providing before and after insight into message, query, and header contents -- would be of immense use in diagnosing malformed requests and other common issues.
 
@@ -132,7 +136,7 @@ Now, imagine troubleshooting this issue - except with hundreds or thousands of r
 
 ![image alt text](./media/image_11.png)
 
-5. Click the **Send** button. 
+5. Click the **Send** button.
 
 Note: No matter how many times you click send, no new trace entry is captured!  This is expected behavior, as our filter is configured to only trace requests with your initials in the query.
 
@@ -156,7 +160,7 @@ Finally, take a look at the exported trace session from the lab.  See if you can
 
 1. Name two kinds of metadata the Trace tool provides you with.
 
-2. How do you detemine the total time taken for the API transaction? 
+2. How do you detemine the total time taken for the API transaction?
 
 3. How do you detemine the time taken for individual policies on the request/response side?
 
@@ -164,7 +168,7 @@ Finally, take a look at the exported trace session from the lab.  See if you can
 
 # Summary
 
-In this lab, you learned how to diagnose a reported problem with your API in real-time using the Trace tool.  You learned how to filter those results down to a relevant subset of data -- and how to export the results for later review. 
+In this lab, you learned how to diagnose a reported problem with your API in real-time using the Trace tool.  You learned how to filter those results down to a relevant subset of data -- and how to export the results for later review.
 
 # References
 
@@ -180,4 +184,4 @@ In this lab, you learned how to diagnose a reported problem with your API in rea
 
 How did you link this lab? Rate [here](https://docs.google.com/a/google.com/forms/d/1Rc17-TqTtqfXgOu9SqYbVGyAzssnANftD2Hpspmr1KQ).
 
-Now to go [Lab-4](https://github.com/apigee/devjam3/tree/master/Labs/Core/Lab%204%20API%20Security%20-%20Securing%20APIs%20with%20API%20Keys)
+Now to go [Lab-4](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%204%20API%20Security%20-%20Securing%20APIs%20with%20API%20Keys)
