@@ -88,11 +88,11 @@ Consider a scenario where one of your API consumers reports seeing 404 errors in
 
 5. Step through the visualization, clicking points of interest along the request/response flow and taking note of the metadata provided at the bottom of the screen.
 
-  **Trace-Step 1:** Quota Policy
+	**Trace-Step 1:** Quota Policy
 
 	**Trace-Step 2:** Extract Variables Policy
 
-	**Trace-Step 3:** Request sent to target
+  **Trace-Step 3:** Request sent to target
 
 	**Trace-Step 4:** Response returned from target
 
