@@ -88,14 +88,15 @@ Consider a scenario where one of your API consumers reports seeing 404 errors in
 
 5. Step through the visualization, clicking points of interest along the request/response flow and taking note of the metadata provided at the bottom of the screen.
 
-	**Trace-Step 1:** Quota Policy
+```
+  **Trace-Step 1:** Quota Policy
 
-	**Trace-Step 2:** Extract Variables Policy
+  **Trace-Step 2:** Extract Variables Policy
 
   **Trace-Step 3:** Request sent to target
 
-	**Trace-Step 4:** Response returned from target
-
+  **Trace-Step 4:** Response returned from target
+```
 *Congratulations!*  You’ve found the problem.  Your target service cannot find an entity with the ID provided (7ed25ec5-c89f-11e6-861b-0ad881f403bfaaa).  This is a trivial example, but you can see how the tool -- providing before and after insight into message, query, and header contents -- would be of immense use in diagnosing malformed requests and other common issues.
 
 6. Edit your URL field once more to follow the pattern below
