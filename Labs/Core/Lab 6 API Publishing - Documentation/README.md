@@ -127,4 +127,4 @@ You’ve learned how to do the following;
 
 How did you link this lab? Rate [here](https://goo.gl/forms/j33WG2U0NFf02QHi1).
 
-Now go to [Lab-7](https://github.com/Enzyme3/apijam/tree/updateForMI/Labs/Core/Lab%207%20API%20Publishing%20-%20Developer%20Portal%20Customization)
+Now go to [Lab-7](https://github.com/Enzyme3/apijam/tree/bfe96e10d10db9508104f89811d710178e53afd7/Labs/Core/Lab%207%20Consume%20APIs)
