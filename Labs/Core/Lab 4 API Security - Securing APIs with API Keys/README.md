@@ -68,6 +68,8 @@ Once secured, consuming apps will need an API Key to successfully invoke your AP
 
 1. Select **Publish → API Products** from the side navigation menu
 
+![image alt text](./media/navigateProducts.png)
+
 2. Click  **+API Product** and populate the following fields
 
     * Section: Product Details
