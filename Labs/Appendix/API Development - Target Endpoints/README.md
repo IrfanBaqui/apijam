@@ -10,7 +10,7 @@ Backend target URLs often change as an API is promoted from development through 
 
 # How can Apigee Edge help?
 
-Apigee Edge includes the ability to externalize your backend target URL through a concept known as *Target Servers*. Target Servers are configured for each environment and allow you to replace a static target URL in your API Proxy definition with a named target server that is automatically replaced at runtime. 
+Apigee Edge includes the ability to externalize your backend target URL through a concept known as *Target Servers*. Target Servers are configured for each environment and allow you to replace a static target URL in your API Proxy definition with a named target server that is automatically replaced at runtime.
 
 # Pre-requisites
 
@@ -18,99 +18,51 @@ None
 
 # Instructions
 
-* Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
+* Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI.
 
-* On the left hand menu, navigate to *Admin->Environments*:
+* On the left hand menu, navigate to **Admin --> Environments --> Target Servers**:
 
-![Open Environment Menu](./media/open-environments-menu.png)
+![Select Target Servers](./media/image_1.png)
 
-* In the Environments Configuration page, select the Target Servers tab:
+* Ensure that the **test** environment is selected, then click on **+ Target server**
 
-![Select target servers](./media/select-target-servers.png)
+![Add Target Server](./media/image_2.png)
 
-* Click on the Edit button in the top right corner of the target servers tab
+* Enter the following values for your test environment's target server, then save your configuration:
 
-![Click on edit](./media/click-on-edit.png)
+  * Enabled: checked
 
-* Click on the *+Target Server* button to add a new target server
+  * Name: {your-initials}-employees-service
 
-![New target server](./media/new-target-server.png)
+  * Host: cosafinity-test.apigee.net
 
-* Making sure the prod environment is selected, enter the following values for your production target server, then save your configuration:
+  * Port: 80
 
-Name: {your-initials}-employees-service
+![Create test target server](./media/image_3.png)
 
-Host: cosafinity-prod.apigee.net
+You should see a message indicating your target server was created successfully and your new target server should be displayed on the screen.
 
-Port: 80
+* Using the environment drop down, change to the *prod* environment:
 
-Enabled: checked
+![switch to prod environment](./media/image_4.png)
 
-![Populate target server](./media/populate-prod-target-server.png)
+* Once again, add another target server. Use the following configurations:
 
-You should see a message indicating your target server was created successfully and your new target server should be displayed on the sreen.
+  * Enabled: checked
 
-* Using the environment drop down, change to the *test* environment:
+  * Name: {your-initials}-employees-service
 
-![switch to test environment](./media/switch-to-test-environment.png)
+  * Host: cosafinity-prod.apigee.net
 
-* Click on the Edit button in the top right corner of the target servers tab
+  * Port: 80
 
-![Click on edit](./media/click-on-edit-test.png)
-
-* Click on the *+Target Server+ button to add a new target server
-
-![New target server](./media/new-target-server-test.png)
-
-* Making sure the test environment is selected, enter the following values for your test target server then save your configuration:
-
-Name: {your-initials}-employees-service
-
-Host: cosafinity-test.apigee.net
-
-Port: 80
-
-Enabled: checked
-
-![Populate target server](./media/populate-test-target-server.png)
+![Click on edit](./media/image_5.png)
 
 At this point we now have created our target server for the *Employees Service* in both the test and prod environments. Our next task will be configuring a proxy that uses the named target servers.
 
-* Navigate to the API Proxies list view:
+* Navigate to the API Proxies list view and select the **Employee** proxy you created previously
 
 ![Proxies list](./media/open-api-proxies-list.png)
-
-* Click on +API Proxy to create a new API Proxy
-
-![New API Proxy](./media/new-api-proxy.png)
-
-* Select the Reverse Proxy option then click on Next
-
-![Proxy Wizard](./media/proxy-wizard-1.png)
-
-* Configure your API Proxy as shown in the following diagram:
-
-![Proxy Wizard](./media/proxy-wizard-2.png)
-
-* Select the Pass Through option for Authorization
-
-![Proxy Wizard](./media/proxy-wizard-3.png)
-
-* Select the default options for virtual host bindings:
-
-![Proxy Wizard](./media/proxy-wizard-4.png)
-
-* Select the default options for deployment options
-
-![Proxy Wizard](./media/proxy-wizard-5.png)
-
-* Once you get confirmation your proxy was successfully created, click on the provided link to open your API Proxy
-
-![Proxy Wizard](./media/proxy-wizard-6.png)
-
-* Once you arrive on the Overview page for your new proxy, click on the develop tab.
-
-![Open Develop Tab](./media/open-develop-tab.png)
 
 * In the develop tab, select the *default* Target Connection from the left hand pane. Scroll down to the bottom of the XML configuration until you see a tag labeled `HTTPTargetConnection`:
 
@@ -143,7 +95,7 @@ You can copy/paste the following configuration for your `HTTPTargetConnection`:
 
 ![Click on URLs](./media/call-prod-and-test-apis.png)
 
-* Verify you get a JSON response from both the test and prod APIs. If you do, congrats, you've successfully configured an API which relies on named target servers instead of hard coded URLs!
+* Verify you get a JSON response from both the test and prod APIs. Then, open up the **trace** console and confirm that traffic is routed to the correct backend endpoint. If you do, congrats, you've successfully configured an API which relies on named target servers instead of hard coded URLs!
 
 # Lab Video
 
@@ -171,4 +123,3 @@ In this lab, we saw how target URLs can be externalized using Target Servers to 
 
 * [Target Server and load balancing documentation](http://docs.apigee.com/api-services/content/load-balancing-across-backend-servers)
 * [Management API documentation for creaating Target Servers](http://docs.apigee.com/management/apis/post/organizations/%7Borg_name%7D/environments/%7Benv_name%7D/targetservers)
-
