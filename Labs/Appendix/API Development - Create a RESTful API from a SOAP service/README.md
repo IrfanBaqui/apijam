@@ -64,7 +64,7 @@ Note: Replace **{your-initials}** with your initials.
 
 * Go with the **default Permission** configuration.
 
-	![image alt text](./media/image_7a.jpg)
+	![image alt text](./media/image_7a.png)
 
 * Once API proxy has built and deployed **click** the link to view your proxy in the proxy editor.
 
