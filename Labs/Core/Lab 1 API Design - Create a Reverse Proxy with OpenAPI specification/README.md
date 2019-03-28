@@ -10,7 +10,7 @@ You have a requirement to create a reverse proxy for taking requests from the In
 
 # How can Apigee Edge help?
 
-Apigee Edge enables you to quickly expose backend services as APIs. You do this by creating an API proxy that provides a facade for the backend service that you want to expose. Apigee Edge out of the box supports the OpenAPI specification, allowing you to auto-generate API Proxies. Apigee Edge also has an OpenAPI specification editor & store which you can use to maintain your OpenAPI specifications. 
+Apigee Edge enables you to quickly expose backend services as APIs. You do this by creating an API proxy that provides a facade for the backend service that you want to expose. Apigee Edge out of the box supports the OpenAPI specification, allowing you to auto-generate API Proxies. Apigee Edge also has an OpenAPI specification editor & store which you can use to maintain your OpenAPI specifications.
 
 The API proxy decouples your backend service implementation from the API that developers consume. This shields developers from future changes to your backend services. As you update backend services, developers, insulated from those changes, can continue to call the API uninterrupted.
 
@@ -25,7 +25,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ## Import an Open API Specification
 
-1. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
+1. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI.
 
 2. Select **Develop → Specs** in the side navigation menu
 
@@ -57,7 +57,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ![image alt text](./media/image_5.jpg)
 
-2. Click **+Proxy** The Build a Proxy wizard is invoked. 
+2. Click **+Proxy** The Build a Proxy wizard is invoked.
 
 ![image alt text](./media/image_6.jpg)
 
@@ -65,7 +65,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ![image alt text](./media/image_7.png)
 
-4. You should see a popup with list of Specs. Select **{your-initials}**_employee_api_spec and click **Select.** 
+4. You should see a popup with list of Specs. Select **{your-initials}**_employee_api_spec and click **Select.**
 
 ![image alt text](./media/image_8.png)
 
@@ -73,7 +73,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ![image alt text](./media/image_9.png)
 
-6. Enter details in the proxy wizard. Replace **{your-initials}** with the initials of your name. 
+6. Enter details in the proxy wizard. Replace **{your-initials}** with the initials of your name.
 
     * Proxy Name: **{your_initials}**_employee_proxy
 
@@ -89,7 +89,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ![image alt text](./media/image_11.png)
 
-9. Select **Pass through (none)** for the authorization in order to choose not to apply any security policy for the proxy. Click Next. 
+9. Select **Pass through (none)** for the authorization in order to choose not to apply any security policy for the proxy. Click Next.
 
 ![image alt text](./media/image_12.jpg)
 
@@ -97,22 +97,26 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ![image alt text](./media/image_13.jpg)
 
-11. Ensure that only the **test** environment is selected to deploy to and click **Build and Deploy** 
+11. Go with the **default Permissions** configuration.
+
+![image alt text](./media/image_13a.png)
+
+12. Ensure that only the **test** environment is selected to deploy to and click **Build and Deploy**
 
 ![image alt text](./media/image_14.jpg)
 
-12. Once the API proxy is built and deployed **click** the link to view your proxy in the proxy editor. 
+13. Once the API proxy is built and deployed **click** the link to view your proxy in the proxy editor.
 
 ![image alt text](./media/image_15.png)
 
-13. *Congratulations!* ...You have now built a reverse proxy for an existing backend service. You should see the proxy **Overview** screen.
+14. *Congratulations!* ...You have now built a reverse proxy for an existing backend service. You should see the proxy **Overview** screen.
 
 ![image alt text](./media/image_16.png)
 
 ## Test the API Proxy
 1. Let us test the newly built API proxy using the [REST Client](https://apigee-rest-client.appspot.com/). Open the REST Client on a new browser window.  
 
-2. Copy the URL for your API proxy. 
+2. Copy the URL for your API proxy.
 
 ![image alt text](./media/image_17.png)
 
@@ -133,7 +137,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 # Lab Video
 
-If you like to learn by watching, here is a short video on creating a reverse proxy using Open API Specification - [https://www.youtube.com/watch?v=3XBG9QOUPzg](https://www.youtube.com/watch?v=3XBG9QOUPzg) 
+If you like to learn by watching, here is a short video on creating a reverse proxy using Open API Specification - [https://www.youtube.com/watch?v=3XBG9QOUPzg](https://www.youtube.com/watch?v=3XBG9QOUPzg)
 
 # Earn Extra-points
 
@@ -141,8 +145,8 @@ Now that you have created a reverse proxy using OpenAPI spec, Click on the Devel
 
 # Quiz
 
-1. How do you import the proxy bundle you just downloaded? 
-2. How does Apigee Edge handle API versioning? 
+1. How do you import the proxy bundle you just downloaded?
+2. How does Apigee Edge handle API versioning?
 3. Are there administrative APIs to create, update or delete API proxies in Apigee?
 
 # Summary
@@ -151,17 +155,16 @@ That completes this hands-on lesson. In this simple lab you learned how to creat
 
 # References
 
-* Useful Apigee documentation links on API Proxies - 
+* Useful Apigee documentation links on API Proxies -
 
-    * Build a simple API Proxy - [http://docs.apigee.com/api-services/content/build-simple-api-proxy](http://docs.apigee.com/api-services/content/build-simple-api-proxy) 
+    * Build a simple API Proxy - [http://docs.apigee.com/api-services/content/build-simple-api-proxy](http://docs.apigee.com/api-services/content/build-simple-api-proxy)
 
-    * Best practices for API proxy design and development - [http://docs.apigee.com/api-services/content/best-practices-api-proxy-design-and-development](http://docs.apigee.com/api-services/content/best-practices-api-proxy-design-and-development) 
+    * Best practices for API proxy design and development - [http://docs.apigee.com/api-services/content/best-practices-api-proxy-design-and-development](http://docs.apigee.com/api-services/content/best-practices-api-proxy-design-and-development)
 
-* Watch this 4minute video on "Anatomy of an API proxy" - [https://youtu.be/O5DJuCXXIRg](https://youtu.be/O5DJuCXXIRg) 
+* Watch this 4minute video on "Anatomy of an API proxy" - [https://youtu.be/O5DJuCXXIRg](https://youtu.be/O5DJuCXXIRg)
 
 # Rate this lab
 
 How did you like this lab? Rate [here](https://goo.gl/forms/G8LAPkDWVNncR9iw2).
 
-Now go to [Lab-2](https://github.com/apigee/devjam3/tree/master/Labs/Core/Lab%202%20Traffic%20Management%20-%20Throttle%20APIs)
-
+Now go to [Lab-2](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%202%20Traffic%20Management%20-%20Throttle%20APIs)

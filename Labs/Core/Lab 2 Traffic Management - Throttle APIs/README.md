@@ -1,4 +1,4 @@
-# Traffic Management : Throttle APIs 
+# Traffic Management : Throttle APIs
 
 *Duration : 20 mins*
 
@@ -20,7 +20,7 @@ Apigee Edge API Proxy created in earlier lab exercise. If not, jump back to "API
 
 # Instructions
 
-1. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
+1. Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI.
 
 2. Select **Develop → API Proxies** in the side navigation menu.
 
@@ -89,7 +89,7 @@ What actually happens, then? To prevent spike-like behavior, Spike Arrest smooth
 
 ![image alt text](./media/image_11.png)
 
-3. Click on **Send** button multiple times, you will see a 429 response code (or 500 on older instances)  when spike arrest policy kicks in to protect target servers from spike in traffic.
+3. Click on **Send** button multiple times, you will see a 429 response code when spike arrest policy kicks in to protect target servers from spike in traffic.
 
 ![image alt text](./media/image_12.png)
 
@@ -119,16 +119,16 @@ That completes this hands-on lesson. In this simple lab you learned how to prote
 
 # References
 
-* Useful Apigee documentation links on Traffic Management & Spike Arrest Policy  - 
+* Useful Apigee documentation links on Traffic Management & Spike Arrest Policy  -
 
     * Spike Arrest Policy - http://docs.apigee.com/api-services/reference/spike-arrest-policy
 
     * Rate Limiting - [http://docs.apigee.com/api-services/content/rate-limiting](http://docs.apigee.com/api-services/content/rate-limiting)
 
-    * Comparing Rate Limiting Policies - [http://docs.apigee.com/api-services/content/comparing-quota-spike-arrest-and-concurrent-rate-limit-policies](http://docs.apigee.com/api-services/content/comparing-quota-spike-arrest-and-concurrent-rate-limit-policies) 
+    * Comparing Rate Limiting Policies - [http://docs.apigee.com/api-services/content/comparing-quota-spike-arrest-and-concurrent-rate-limit-policies](http://docs.apigee.com/api-services/content/comparing-quota-spike-arrest-and-concurrent-rate-limit-policies)
 
 # Rate this lab
 
 How did you like this lab? Rate [here](https://goo.gl/forms/oivm4A6DqBKM9AEJ3).
 
-Now go to [Lab-3](https://github.com/apigee/devjam3/tree/master/Labs/Core/Lab%203%20API%20Diagnostics%20-%20Trace%20tool)
+Now go to [Lab-3](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%203%20API%20Diagnostics%20-%20Trace%20tool)

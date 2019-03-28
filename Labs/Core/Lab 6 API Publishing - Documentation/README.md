@@ -42,11 +42,11 @@ For this lab, you will need…
 
 2. Enter details in the portal creation wizard. Replace **{your-initials}** with the initials of your name and replace **{api_proxy_name}** with the name of the proxy.
 
-  * Name: **{your_initials}**_**{api_proxy_name}**_portal
+  * Name: **{your_initials}_portal**
 
   * Description: Enter a brief description
 
-3. Click **Create Portal**
+3. Click **Create**
 
 ![image alt text](./media/image_2.png)
 
@@ -85,7 +85,7 @@ For this lab, you will need…
 
 ![image alt text](./media/image_9.png)
 
-2. In the Portal UI, click **APIs** to view the products that have been published. 
+2. In the Portal UI, click **APIs** to view the products that have been published.
 
   * For demonstrative purposes, the screenshot includes multiple products. Products are used to bundle APIs together so that a developer can request access to a set of related functionality without registering for each API.  They are also useful for managing access to, and quotas for, particular developers.  For more on API Products, [read this document](http://docs.apigee.com/developer-services/content/what-api-product).
 
@@ -127,4 +127,4 @@ You’ve learned how to do the following;
 
 How did you link this lab? Rate [here](https://goo.gl/forms/j33WG2U0NFf02QHi1).
 
-Now go to [Lab-7](https://github.com/apigee/devjam3/tree/master/Labs/Core/Lab%207%20API%20Publishing%20-%20Developer%20Portal%20Customization)
+Now go to [Lab-7](https://github.com/Enzyme3/apijam/tree/updateForMI/Labs/Core/Lab%207%20API%20Publishing%20-%20Developer%20Portal%20Customization)

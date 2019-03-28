@@ -6,7 +6,7 @@
 
 # Use case
 
-You just launched your app -- and it’s a hit!  One of your backend services is swamped, responding slowly and damaging the end-user experience. Since the information returned by this service does not change frequently, it’s a perfect candidate for caching.  Your team decides to improve performance by implementing caching for this service in your API layer. 
+You just launched your app -- and it’s a hit!  One of your backend services is swamped, responding slowly and damaging the end-user experience. Since the information returned by this service does not change frequently, it’s a perfect candidate for caching.  Your team decides to improve performance by implementing caching for this service in your API layer.
 
 # How can Apigee Edge help?
 
@@ -46,7 +46,7 @@ Here’s a breakdown of the Apigee Edge caching policies:
 </table>
 
 
-In this lab, we will configure your proxy to cache the results of a request for 60 seconds at a time.  Once we’ve seen how this affects runtime performance, we’ll leverage the cache a different way -- explicitly defining the cache key and contents.  We’ll populate this cache with an employee ID and demonstrate how to retrieve this value from cache with a LookupCache policy. 
+In this lab, we will configure your proxy to cache the results of a request for 60 seconds at a time.  Once we’ve seen how this affects runtime performance, we’ll leverage the cache a different way -- explicitly defining the cache key and contents.  We’ll populate this cache with an employee ID and demonstrate how to retrieve this value from cache with a LookupCache policy.
 
 # Pre-requisites
 
@@ -56,28 +56,28 @@ You have an API proxy created in Apigee Edge. If not, jump back to the "Create R
 
 # Part 1 - Response Cache Policy
 
-* Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI. 
+* Go to [https://apigee.com/edge](https://apigee.com/edge) and log in. This is the Edge management UI.
 
 * Select **Develop → API Proxies** in the side navigation menu
 
 ![image alt text](./media/image_0.jpg)
 
-* Select the **{your_initials}_employee_api_proxy** that you created in an earlier lab exercise.	
+* Select the **{your_initials}_employee_proxy** that you created in an earlier lab exercise.
 
 ![image alt text](./media/image_1.png)
 
-	
+
 * Click on the **Develop** tab to access the API Proxy development dashboard.
 
 ![image alt text](./media/image_2.png)
 
 * Click on **Pre Flow** under Proxy Endpoints, then click **+ Step** on the Request flow to attach a *Response Cache* policy.
 
-![image alt text](./media/image_3.png)	
+![image alt text](./media/image_3.png)
 
 * Select **Response Cache** rename to something descriptive like *Cache for Employees* and click on the **Add** button to add the Response Cache policy.
 
-![image alt text](./media/image_4.png)	
+![image alt text](./media/image_4.png)
 
 * The default configuration for this policy looks like the following:
 
@@ -106,20 +106,20 @@ You have an API proxy created in Apigee Edge. If not, jump back to the "Create R
 
 **A Quick Note on Cache Expiry, Resources**
 
-The expiry settings are quite flexible. You could, for example, set the expiry to a particular time of day - say 3:00am Pacific time each day. This allows you to hold a cache all day, and refresh it at the beginning of each day, for example. For more information, see [the cache documentation](http://apigee.com/docs/api-services/reference/response-cache-policy). 
+The expiry settings are quite flexible. You could, for example, set the expiry to a particular time of day - say 3:00am Pacific time each day. This allows you to hold a cache all day, and refresh it at the beginning of each day, for example. For more information, see [the cache documentation](http://apigee.com/docs/api-services/reference/response-cache-policy).
 
 Apigee Edge provides a default cache resource that can be used for quick testing, which is what is being used in this lesson. Cache policies like ResponseCache can also used named cache resources. A Named cache resource can be manipulated administratively, outside of policy control. For examine, if you would like to clear a cache administratively, you can do that with a named cache resource. It takes just a moment. For more information on Cache Resources, see [Manage Caches for an Environment](http://apigee.com/docs/api-services/content/manage-caches-environment).
 
 * Click **Target Endpoints → default → PostFlow**.  Verify your cache policy appears here, as well -- on the Response side.  Then, save your proxy and wait for it to successfully deploy.
 
 	![image alt text](./media/image_5.png)
-	
+
 
 * Switch to the **Trace** tab.  We’ll use this to test the caching we just configured for our proxy.  For more on Trace, see the *Diagnostics - API Trace* lab.  
 
 * Start a new trace session and click **Send** multiple times (two or three) to fire a few test requests.
 
-	
+
 * Note the difference between your first request and subsequent requests made within 60 seconds of the first (remember, this is the lifetime defined for your cache).  A few things should jump out at you:
 
   * Response times reduced with cache.
@@ -137,11 +137,11 @@ You’ve improved the performance of your API with some clever caching of employ
 
 * Return to the **Develop** tab to access the API Proxy development dashboard.
 
-* Change the expiry time on your Response Cache policy to 1s.  This will allow us to make multiple requests for *Part 2* of the lab without triggering a cached response from our *Part 1* work.
+* Change the expiry time on your Response Cache policy to 1.  This will allow us to make multiple requests for *Part 2* of the lab without triggering a cached response from our *Part 1* work.
 
 	![image alt text](./media/image_7.png)
 
-* Click **Proxy Endpoints → default → Get an Employee with given UUID**.
+* Click **Proxy Endpoints → default → get /{employee-uuid}**.
 
 * Click **+ Step** on the **Request** side.
 
@@ -176,6 +176,8 @@ We’ve attached a Populate Cache policy to what Apigee calls a **Conditional Ro
 
 * Add a **Lookup Cache** policy, changing the name to Lookup ID
 
+![image alt text](./media/image_8a.png)
+
 **What have we done here?**
 
 We’ve attached a Lookup Cache policy to the response flow of our route. This policy will check the cache, by key name, for previously seeded data.  If it finds it, the data will be saved to a variable specified in the XML config.  The XML below represents a slightly revised version of the standard policy, specifying a cache key and variable name for storing the cached content.  For more information on this policy, see [Lookup Cache](https://docs.apigee.com/api-services/reference/lookup-cache-policy) in our docs.
@@ -201,12 +203,14 @@ We’ve attached a Lookup Cache policy to the response flow of our route. This p
 * Change the URL so that the following is appended to the end -- this will change your request to ask for a **specific employee record**, invoking the cache logic we’ve just applied.  
 
 ```
-/05d3c8cd-ee18-11e6-b5a4-122e0737977d
+/41f1f77b-8922-11e8-86ee-021e63aadcc4
 ```
 
 * Start a **New Trace Session** and click **Send**.
 
 * Your graph should look something like this, below.  Take note -- you have two new cache policies in effect.  One is populating the cache with the url suffix ```/{employee-id}``` -- and the other is looking up that value, by key name, in cache.  You can see proof of this in the assigned variable, employeePathID
+
+![image alt text](./media/image_8b.png)
 
 * *Congratulations!*  You’ve done a few cool things here -- defined a custom key for your new cache, seeded it with some data from the client request, and retrieved that data later in the flow.  On retrieving this data from cache, you’ve assigned it to a flow variable.  In a real life scenario, you could use this flow variable to drive conditional logic, or otherwise take action on the data retrieved from cache.  Nice work!
 
@@ -226,7 +230,7 @@ You should see something like this, Select the **test** environment:
 
 ![image alt text](./media/image_10.png)
 
-Create a named cache resource with your initials. Then, return to your Proxy, and modify the ResponseCache policy to explicitly use that named cache resource. hint: see [the documentation for the ResponseCache policy](http://apigee.com/docs/api-services/reference/response-cache-policy). It might have something to do with adding an element like this to the configuration: 
+Create a named cache resource with your initials. Then, return to your Proxy, and modify the ResponseCache policy to explicitly use that named cache resource. hint: see [the documentation for the ResponseCache policy](http://apigee.com/docs/api-services/reference/response-cache-policy). It might have something to do with adding an element like this to the configuration:
 
 ```
 <CacheResource>name_of_cache_resource</CacheResource>
@@ -244,7 +248,7 @@ Keep in mind that all of the administrative actions you can perform in the Edge 
 
 # Summary
 
-In this lab, you learned how to apply cache policies to enhance the performance of your API.  Caching is not a silver bullet for all API performance problems.  Fear not!  Apigee Edge analytics are a powerful tool for deciding what to cache, how long, and what performance gains to expect.  Consider giving the analytics lab a try next. 
+In this lab, you learned how to apply cache policies to enhance the performance of your API.  Caching is not a silver bullet for all API performance problems.  Fear not!  Apigee Edge analytics are a powerful tool for deciding what to cache, how long, and what performance gains to expect.  Consider giving the analytics lab a try next.
 
 # References
 
@@ -259,4 +263,3 @@ In this lab, you learned how to apply cache policies to enhance the performance 
 # Rate this lab
 
 How did you link this lab? Rate [here](https://docs.google.com/a/google.com/forms/d/1TUk1BCNO75Cli2OzAFNctykuJ9TF6d9uv7HwBYX2S9Q).
-

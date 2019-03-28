@@ -44,17 +44,19 @@ For this lab, you will need an API Proxy that is not currently secured.  If you 
 
 ![image alt text](./media/image_2.png)
 
-5. Remove the **Extract Variables** policy that you created in the previous lab.  Click on **X** on the top right corner of   the policy to remove the policy.
+5. Remove the **Extract Variables** policy that you created in the previous lab.  Click on **X** on the top right corner of the policy to remove the policy.
 
-6. Verify that you can successfully make calls using the built-in trace tool.
+6. Remove the **Spike Arrest** policy that you created in the previous lab.  Click on **X** on the top right corner of the policy to remove the policy.
 
-7. Click the **Trace** tab near the top of the window.
+7. After removing both policies, click on **Save** to save your configurations.
+
+8. Click the **Trace** tab near the top of the window.
 
    The Trace view allows you to initiate tracing for up to 10 minutes, during which time all requests (regardless of whether      they are sent from the trace tool or any other client) will be captured and their traces made visible to you.
 
-8. Click **Start Trace Session** to begin a trace session.
+9. Click **Start Trace Session** to begin a trace session.
 
-9. Click **Send** to send a request.  If your API Proxy requires query parameters add them here prior to sending.
+10. Click **Send** to send a request.  If your API Proxy requires query parameters add them here prior to sending.
 
    You should see a successful 2xx response for your API Call (it may take a few seconds for the trace results to appear)
 
@@ -70,13 +72,17 @@ Once secured, consuming apps will need an API Key to successfully invoke your AP
 
     * Section: Product Details
 
-        * Name: **{your_initials}_{api_name}**_product
+        * Name: **{your_initials}_product**
 
-        * Environment: test
+        * Display name: **{your_initials}_product**
+
+        * Environment: test and prod
 
         * Access: Public
 
-    * Section: Resources
+        * Automatically approve access requests: ensure checkbox is selected
+
+    * Section: API Resources
 
         * Section: API Proxies
 
@@ -87,6 +93,8 @@ Once secured, consuming apps will need an API Key to successfully invoke your AP
 3. **Save** the API Product.
 
    Note: We are adding the entire API Proxy to the API Product.  We can just as easily select one or more operations from one    or more API Proxies and bundle them together in an API Product.
+
+![image alt text](./media/image_2a.png)
 
 ## Create An App Developer
 
@@ -108,7 +116,7 @@ Next we will create an App Developer who can consume the new API Product.
 
     * Email: **{your_email}**
 
-    * Username: **{your_initials}**_apikeylab_developer
+    * Username: **{your_email}**
 
 3. Click **Create** to save the new App Developer.
 
@@ -128,20 +136,26 @@ An App Developer can create any number of Apps.  Each App can register for any n
 
 3. Populate the following fields
 
-    * Name: **{your_initials}_{product_name}**_app
+    * Name: **{your_initials}_app**
 
-    * Developer: Select the developer you created from the pulldown.
+    * Display Name: **{your_initials}_app**
 
-    * Product: Click **+Product** to add your API Product to this App.
+    * Developer: Select the **developer** radio button then select the developer you created from the pulldown
+
+    * Credentials: Click **Add a credential**
+
+        * Expiry: **Never**
+
+        * Product: Click **Add product**
+
+            * Select the **product** you created
+
 
 ![image alt text](./media/image_9.png)
 
-4. You can include the Callback URL as `http://www.google.com`. The Callback URL is required for 3-legged OAuth implementation scenarios.
+4. Click **Create**.
 
-5. Click **Save**.
-
-
-   Open the newly created App and click *Show* under *Consumer Key*.  This will reveal the API Key that must be used to invoke the API when API Key verification is in use.  Copy this key into a text document for later use.  
+   Open the newly created App and click *Show* next to *Key*.  This will reveal the API Key that must be used to invoke the API when API Key verification is in use.  Copy this key into a text document for later use.  
 
 ![image alt text](./media/image_10.png)
 
@@ -222,4 +236,4 @@ In this lab you learned how to protect your API Proxy using the Verify API Key p
 
 How did you like this lab? Rate [here](https://goo.gl/forms/XxDqVtWHnyFdEChv1).
 
-Now go to [Lab-5](https://github.com/apigee/devjam3/tree/master/Labs/Core/Lab%205%20Traffic%20Management%20-%20Rate%20Limit%20APIs)
+Now go to [Lab-5](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%205%20Traffic%20Management%20-%20Rate%20Limit%20APIs)

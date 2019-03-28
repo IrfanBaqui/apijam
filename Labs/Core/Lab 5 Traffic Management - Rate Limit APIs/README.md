@@ -16,7 +16,7 @@ Secondly, Apigee provides the capability to apply API Quota settings at the ‘A
 
 # Pre-requisites
 
-You must have completed the *API Security - Securing APIs with API Keys* lab in order to run this lab. 
+You must have completed the *API Security - Securing APIs with API Keys* lab in order to run this lab.
 
 # Instructions
 
@@ -46,15 +46,15 @@ Note: As you will have already completed the *API Security - Securing APIs with 
 
     ![image alt text](./media/image_0.png)
 
-5. Create 2 new API Products that include this proxy, ‘**{your_initials}**_Employees Bronze Product’ and ‘**{your_initials}**_Employees Platinum Product’
+5. Create 2 new API Products that include this proxy, ‘**{your_initials}_Employees Bronze Product**’ and ‘**{your_initials}_Employees Platinum Product**’
 
     For both products specify as before:
 
-    * Environment: test
+    * Environment: test and prod
 
-     * Access: Public
+    * Access: Public
 
-      * Key Approval Type: Automatic
+  * Automatically approve access requests: ensure checkbox is selected
 
     For the **Bronze** product specify a quota limit of 1 request per minute:
 
@@ -62,7 +62,7 @@ Note: As you will have already completed the *API Security - Securing APIs with 
 
     For the **Platinum** product specify a quota limit of 1000 requests per minute:
 
-    ![image alt text](./media/image_2.png)	
+    ![image alt text](./media/image_2.png)
 
 6. Register 2 new Developer Apps, one for each of your new products. Record the API Keys for each App.
 
@@ -70,11 +70,11 @@ Note: As you will have already completed the *API Security - Securing APIs with 
 
     ![image alt text](./media/image_3.png)
 
-8. Verify with the *Platinum* key that you can send in more than 1 request per minute.	
+8. Verify with the *Platinum* key that you can send in more than 1 request per minute.
 
 # Lab Video
 
-If you like to learn by watching, here is a short video on setting up dynamic quotas [https://www.youtube.com/watch?v=f9jg1fJJTRE](https://www.youtube.com/watch?v=f9jg1fJJTRE) 
+If you like to learn by watching, here is a short video on setting up dynamic quotas [https://www.youtube.com/watch?v=f9jg1fJJTRE](https://www.youtube.com/watch?v=f9jg1fJJTRE)
 
 # Earn Extra-points
 
@@ -92,16 +92,16 @@ That completes this hands-on lesson. In this simple lab you learned how to apply
 
 # References
 
-* Useful Apigee documentation links on quotas - 
+* Useful Apigee documentation links on quotas -
 
-    * Quota Policy Reference - [http://docs.apigee.com/api-services/reference/quota-policy](http://docs.apigee.com/api-services/reference/quota-policy) 
+    * Quota Policy Reference - [http://docs.apigee.com/api-services/reference/quota-policy](http://docs.apigee.com/api-services/reference/quota-policy)
 
-    * Community post on setting up dynamic quotas [https://community.apigee.com/questions/1488/how-do-the-quota-settings-on-an-api-product-intera.html](https://community.apigee.com/questions/1488/how-do-the-quota-settings-on-an-api-product-intera.html) 
+    * Community post on setting up dynamic quotas [https://community.apigee.com/questions/1488/how-do-the-quota-settings-on-an-api-product-intera.html](https://community.apigee.com/questions/1488/how-do-the-quota-settings-on-an-api-product-intera.html)
 
-* Watch this 4minute video on "Dynamic Quotas’ - [https://youtu.be/z8Rj_VzSbh4](https://youtu.be/z8Rj_VzSbh4) 
+* Watch this 4minute video on "Dynamic Quotas’ - [https://youtu.be/z8Rj_VzSbh4](https://youtu.be/z8Rj_VzSbh4)
 
 # Rate this lab
 
 How did you like this lab? Rate [here](https://goo.gl/forms/BJGUY07XCGboHxrw2).
 
-Now to go [Lab-6](https://github.com/apigee/devjam3/tree/master/Labs/Core/Lab%206%20API%20Publishing%20-%20Documentation)
+Now to go [Lab-6](https://github.com/Enzyme3/apijam/tree/updateForMI/Labs/Core/Lab%206%20API%20Publishing%20-%20Documentation)
