@@ -101,9 +101,9 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ![image alt text](./media/image_13a.png)
 
-12. Ensure that only the **test** environment is selected to deploy to and click **Build and Deploy**
+12. Ensure that both the **test** and **prod** environments are selected to deploy to and click **Build and Deploy**
 
-![image alt text](./media/image_14.jpg)
+![image alt text](./media/image_14.png)
 
 13. Once the API proxy is built and deployed **click** the link to view your proxy in the proxy editor.
 
