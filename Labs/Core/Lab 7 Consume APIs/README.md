@@ -28,7 +28,7 @@ Secure APIs with API Keys, Publishing API Documentation lab exercises. If not, j
 
 ![image alt text](./media/image_0.png)
 
-3. Click on **{your_initials}_{api_proxy_name}_portal** that you have created in earlier lab exercise.
+3. Click on **{your_initials}_portal** that you have created in earlier lab exercise.
 
 ![image alt text](./media/image_1.png)
 
@@ -124,4 +124,4 @@ That completes this hands-on lesson. In this simple lab you learned how to self 
 
 How did you like this lab? Rate [here](https://goo.gl/forms/H4qE5nLy36yWjj642).
 
-Now go to [Lab-8](https://github.com/Enzyme3/apijam/tree/updateForMI/Labs/Core/Lab%208%20API%20Analytics%20-%20Custom%20Reports)
+Now go to [Lab-8](https://github.com/Enzyme3/apijam/tree/bfe96e10d10db9508104f89811d710178e53afd7/Labs/Core/Lab%208%20API%20Analytics%20-%20Custom%20Reports)
