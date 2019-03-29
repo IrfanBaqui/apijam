@@ -108,9 +108,16 @@ Note that the URL is the same hostname we were using for Operation 1. The only d
 
 ![image alt text](./media/image_8.png)
 
-2. Next, download the following [cert.pem](https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Appendix/API%20Security%20-%20Multiple%20Authentication%20Schemes/resources/cert.pem) and [key.pem](https://github.com/Enzyme3/apijam/blob/master/Labs/Appendix/API%20Security%20-%20Multiple%20Authentication%20Schemes/resources/key.pem) files and save them as **cert.pem** and **key.pem**, respectively. We will be using this keypair to authenticate ourselves.
+2. Next, download the following files:
+ * [cert.pem](https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Appendix/API%20Security%20-%20Multiple%20Authentication%20Schemes/resources/cert.pem) --> save as **cert.pem**
 
-3. Once downloaded, open up a terminal and run the following curl command
+* [key.pem](https://github.com/Enzyme3/apijam/blob/master/Labs/Appendix/API%20Security%20-%20Multiple%20Authentication%20Schemes/resources/key.pem) --> save as **key.pem**
+
+* [request2.xml](https://github.com/Enzyme3/apijam/blob/master/Labs/Appendix/API%20Security%20-%20Multiple%20Authentication%20Schemes/resources/request2.xml) --> save as **request2.xml**
+
+We will be running a cURL command to use the cert/key pair for mTLS authentication
+
+3. Once downloaded, open up a terminal in the same directory where the cert/pem/requet were saved, and run the following cURL command
 ```
 curl -X POST --header "Content-Type:text/xml;charset=UTF-8" --data @request2.xml --cert ./cert.pem --key ./key.pem https://apijams-amer-1-test.apigee.net/v1/pharmacy
 ```
