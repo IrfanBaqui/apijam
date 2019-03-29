@@ -118,7 +118,7 @@ Now that we have configured the end user credentials in Okta, and the API Proxy 
 
 2. Use the [REST client](https://apigee-rest-client.appspot.com) to send a token request to the OAuth proxy
 
-* URL: https://apijams-amer-1-test.apigee.net/oauth-ext/token
+* URL: http://apijams-amer-1-test.apigee.net/oauth-ext/token
 
 * Method: POST
 
