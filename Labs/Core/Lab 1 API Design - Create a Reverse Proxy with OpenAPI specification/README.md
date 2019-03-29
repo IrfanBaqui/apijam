@@ -39,7 +39,7 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
    * File Name: **{your-initials}**_employee_api_spec
 
-   * URL: [https://raw.githubusercontent.com/Enzyme3/apijam/master/Resources/employees-oas.json](https://raw.githubusercontent.com/apigee/apijam/master/Resources/employees-oas.json)
+   * URL: [https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Core/Lab%201%20API%20Design%20-%20Create%20a%20Reverse%20Proxy%20with%20OpenAPI%20specification/resources/employee.json](https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Core/Lab%201%20API%20Design%20-%20Create%20a%20Reverse%20Proxy%20with%20OpenAPI%20specification/resources/employee.json)
 
 ![image alt text](./media/image_2.png)
 
