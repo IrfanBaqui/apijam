@@ -140,13 +140,13 @@ Now that we have configured the end user credentials in Okta, and the API Proxy 
 
 		* grant_type : password
 
-		* user : {{user account(email) you previously created}}
+		* user : {{ user account(email) you previously created }}
 
-		* password : {{password for user you previously created}}
+		* password : {{ password for user you previously created }}
 
-		* client_id : {{client id for app you previously created}}
+		* client_id : {{ client id for any one of the apps you previously created }}
 
-		* client_secret : {{client secret for app you previously created}}
+		* client_secret : {{ client secret for any one of the apps you previously created }}
 
 ![image alt text](./media/tokenRequestBody.png)
 
@@ -162,7 +162,7 @@ Navigate to the proxy overview screen of the "Employee" proxy, and start the Tra
 
 4. Send in a request to the API Proxy without the authorization
 
-* URL: http://apijams-amer-1-test.apigee.net/v1/{{your initials}}_employee_proxy
+* URL: http://apijams-amer-1-test.apigee.net/v1/{{your-initials}}_employee_proxy
 
 * Method: GET
 

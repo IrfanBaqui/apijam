@@ -71,6 +71,8 @@ You have an API proxy created in Apigee Edge. If not, jump back to the "Create R
 
 ![image alt text](./media/image_2.png)
 
+* Click on **Pre Flow** under Proxy Endpoints, then remove policies such as **Verify API Key** and **Quota** that are attached to the flow. You can remove the policies by hovering over them and clicking on the small **X** that appears on the upper-right corner of the policy.
+
 * Click on **Pre Flow** under Proxy Endpoints, then click **+ Step** on the Request flow to attach a *Response Cache* policy.
 
 ![image alt text](./media/image_3.png)
