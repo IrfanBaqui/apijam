@@ -66,7 +66,7 @@ Note: As you will have already completed the *API Security - Securing APIs with 
 
 6. Register 2 new Developer Apps, one for each of your new products. Record the API Keys for each App.
 
-7. Launch the [REST Test client](https://apigee-rest-client.appspot.com/) and run some tests using each API Key. Verify that with the *Bronze* API key that you cannot send in more than 1 request per minute without triggering a quota exceeded exception:
+7. Launch the [REST Test client](https://client.restlet.com/) and run some tests using each API Key. Verify that with the *Bronze* API key that you cannot send in more than 1 request per minute without triggering a quota exceeded exception:
 
     ![image alt text](./media/image_3.png)
 
