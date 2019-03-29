@@ -1,0 +1,6 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hip="http://hipster">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <hip:GetDrugs2/>
+   </soapenv:Body>
+</soapenv:Envelope>
