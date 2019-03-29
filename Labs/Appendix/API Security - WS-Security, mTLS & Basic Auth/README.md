@@ -109,11 +109,11 @@ Note that the URL is the same hostname we were using for Operation 1. The only d
 ![image alt text](./media/image_8.png)
 
 2. Next, download the following files:
- * [cert.pem](https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Appendix/API%20Security%20-%20Multiple%20Authentication%20Schemes/resources/cert.pem) --> save as **cert.pem**
+ * [cert.pem](https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Appendix/API%20Security%20-%20WS-Security%2C%20mTLS%20%26%20Basic%20Auth/resources/cert.pem) --> save as **cert.pem**
 
-* [key.pem](https://github.com/Enzyme3/apijam/blob/master/Labs/Appendix/API%20Security%20-%20Multiple%20Authentication%20Schemes/resources/key.pem) --> save as **key.pem**
+* [key.pem](https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Appendix/API%20Security%20-%20WS-Security%2C%20mTLS%20%26%20Basic%20Auth/resources/key.pem) --> save as **key.pem**
 
-* [request2.xml](https://github.com/Enzyme3/apijam/blob/master/Labs/Appendix/API%20Security%20-%20Multiple%20Authentication%20Schemes/resources/request2.xml) --> save as **request2.xml**
+* [request2.xml](https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Appendix/API%20Security%20-%20WS-Security%2C%20mTLS%20%26%20Basic%20Auth/resources/request2.xml) --> save as **request2.xml**
 
 We will be running a cURL command to use the cert/key pair for mTLS authentication
 
