@@ -6,7 +6,8 @@
 
 # **Use case**
 
-You have a SOAP Service that is consumed by a client application. The service has multiple SOAP operations, and you would like to enforce different authentication mechanisms per operation.
+You have a SOAP Service that is consumed by multiple client applications. The service has multiple SOAP operations, and you would like to enforce different authentication mechanisms per operation.
+
 In this lab, we will use Apigee as a security gateway to protect your service endpoints using WS-Security, HTTP (Basic) Authentication, and mutual TLS.
 
 # **How can Apigee Edge help?**
@@ -21,7 +22,7 @@ Apigee has a highly flexible programming model that allows you to customize all 
 
 # **Instructions**
 
-Let us assume that we have a handful of authentication schemes that are used across the enterprise. We want to ensure that these authentication schemes are enforced consistently across the various APIs and services it protects. To achieve this, we leverage [shared flows](https://docs.apigee.com/api-platform/fundamentals/shared-flows). Shared flows allow us to define functionality at a single point, and then re-use that functinoality across multiple endpoints. This ensures consistency, shortens development time, and creates more easily managed code.
+Let us assume that we have a handful of authentication schemes that are used across the enterprise. We want to ensure that these authentication schemes are enforced consistently across the various APIs and services it protects. To achieve this, we leverage [shared flows](https://docs.apigee.com/api-platform/fundamentals/shared-flows). Shared flows allow us to define functionality at a single point, and then re-use that functionality across multiple endpoints. This ensures consistency, shortens development time, and creates more easily managed code.
 
 ## View Pharmacy API Proxy
 
@@ -85,7 +86,7 @@ Let's start by verifying Basic Authentication.
 
 * Basic Auth token: **YWxpY2U6dGVzdFBhc3N3b3Jk**
 
-  * This token was created following the [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) standard from the credentials **alice:testPassword**, which have been pre-configured in Apigee
+  * This token was created following the [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) standard, and is the base64 encoded representation of the credential set **alice:testPassword**, which has been pre-configured in Apigee
 
 Go back to the REST Client, modify the body to use **Drugs1**, and add the **Authorization** header with value **Basic YWxpY2U6dGVzdFBhc3N3b3Jk**
 
@@ -107,7 +108,7 @@ Note that the URL is the same hostname we were using for Operation 1. The only d
 
 ![image alt text](./media/image_8.png)
 
-2. Next, download the following [cert.pem]() and [key.pem]() files. We will be using this keypair to authenticate ourselves.
+2. Next, download the following [cert.pem](https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Appendix/API%20Security%20-%20Multiple%20Authentication%20Schemes/resources/cert.pem) and [key.pem](https://github.com/Enzyme3/apijam/blob/master/Labs/Appendix/API%20Security%20-%20Multiple%20Authentication%20Schemes/resources/key.pem) files and save them as **cert.pem** and **key.pem**, respectively. We will be using this keypair to authenticate ourselves.
 
 3. Once downloaded, open up a terminal and run the following curl command
 ```
@@ -128,11 +129,11 @@ We conclude by verifying the WS-Security Authentication. We will be working with
 
 1. Click on **Develop → API Proxies** from side navigation menu.
 
-![image alt text](./media/image_1.jpg)
+![image alt text](./media/image_1.png)
 
 2. Search for and click the pre-built **wssec** proxy. This proxy will generate an encrypted and signed request for us. Enable tracing on this proxy.
 
-![image alt text](./media/image_11.jpg)
+![image alt text](./media/image_11.png)
 
 3. This proxy has a **/generate** endpoint that reads in the inbound **username** and **password** query parameters and uses both to create a digitally signed request with an encrypted Username Token. Start a **trace** session and navigate to the below URL to generate the signed request.
 
@@ -142,14 +143,28 @@ http://apijams-amer-1-test.apigee.net/wssec/generate?username=alice&password=tes
 
 Click on the blue **Java Callout policy** to view all of the variables read and assigned by the policy. Locate the **output** variable and copy all of the contents EXCEPT for the leading **<?xml...>** tag.
 
-![image alt text](./media/image_12.jpg)
+![image alt text](./media/image_12.png)
 
 * We are copying the output from the trace session
 
-4. Re-open up the [REST Client](https://apigee-rest-client.appspot.com/) and use the
+4. Re-open up the [REST Client](https://apigee-rest-client.appspot.com/), and send the generated request to the **pharmacy** proxy.
 
-![image alt text](./media/image_13.jpg)
+* Method: POST
+
+* URL: http://apijams-amer-1-test.apigee.net/v1/pharmacy
+
+* Headers
+
+  * Content-Type : text/xml
+
+* Body
+
+  * Select the **raw** radio button
+
+  * Paste the previously generated sign/encrypted XML request
+
+![image alt text](./media/image_13.png)
 
 5. **trace** the **pharmacy** proxy to view how WS-Security was enforced.
 
-![image alt text](./media/image_14.jpg)
+![image alt text](./media/image_14.png)
