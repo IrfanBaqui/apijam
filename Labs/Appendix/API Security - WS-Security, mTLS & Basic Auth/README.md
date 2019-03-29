@@ -1,4 +1,4 @@
-# **API Security - Multiple Authentication Schemes**
+# **API Security - WS-Security, mTLS & Basic Auth**
 
 *Duration : 20 mins*
 
