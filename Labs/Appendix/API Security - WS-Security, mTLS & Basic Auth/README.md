@@ -152,7 +152,7 @@ Click on the blue **Java Callout policy** to view all of the variables read and 
 
 ![image alt text](./media/image_12.png)
 
-* We are copying the output from the trace session
+* We are copying the output from the trace session to get the response body in its raw form. Because the request is digitally signed, even trivial changes such as addition/removal of whitespace will make the signature invalid.
 
 4. Re-open up the [REST Client](https://apigee-rest-client.appspot.com/), and send the generated request to the **pharmacy** proxy.
 
