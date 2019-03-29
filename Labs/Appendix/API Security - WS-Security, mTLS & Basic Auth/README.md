@@ -48,7 +48,7 @@ Click on all 3 and note that each operation has a different **shared flow** poli
 
 4. Confirm that security is enforced on each of the SOAP Operations. Click on **trace** and enable a trace session.
 
-Then, use the [REST Client](https://apigee-rest-client.appspot.com/) to send a SOAP request to each of the services.
+Then, use the [REST Client](https://client.restlet.com/) to send a SOAP request to each of the services.
 
 * Method: POST
 
