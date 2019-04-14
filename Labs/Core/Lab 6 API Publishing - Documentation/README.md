@@ -74,6 +74,18 @@ For this lab, you will need…
 
 ![image alt text](./media/image_7.png)
 
+6. **[Optional]** Add an image by clicking **Select** 
+
+* Choose **External Image** from the dropdown
+
+* Copy / paste in the following image url: [https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Core/Lab%206%20API%20Publishing%20-%20Documentation/media/employees.png](https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Core/Lab%206%20API%20Publishing%20-%20Documentation/media/employees.png)
+
+* Click **Add**
+
+![image alt text](./media/image_7a.png)
+
+![image alt text](./media/image_7b.png)
+
 6. Review selections and click **Finish** to publish the API product (and OpenAPI Specification Snapshot) to the Developer Portal
 
 ![image alt text](./media/image_8.png)
@@ -127,4 +139,4 @@ You’ve learned how to do the following;
 
 How did you link this lab? Rate [here](https://goo.gl/forms/j33WG2U0NFf02QHi1).
 
-Now go to [Lab-7](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%207%20Consume%20APIs)
+Now go to [Lab-7](../Lab%207%20Consume%20APIs)

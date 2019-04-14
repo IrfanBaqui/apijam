@@ -46,7 +46,7 @@ Note: As you will have already completed the *API Security - Securing APIs with 
 
     ![image alt text](./media/image_0.png)
 
-5. Create 2 new API Products that include this proxy, ‘**{your_initials}_Employees Bronze Product**’ and ‘**{your_initials}_Employees Platinum Product**’
+5. Create 2 new API Products that include this proxy, ‘**{your_initials}_Employees_Bronze_Product**’ and ‘**{your_initials}_Employees_Platinum_Product**’
 
     For both products specify as before:
 
@@ -104,4 +104,4 @@ That completes this hands-on lesson. In this simple lab you learned how to apply
 
 How did you like this lab? Rate [here](https://goo.gl/forms/BJGUY07XCGboHxrw2).
 
-Now to go [Lab-6](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%206%20API%20Publishing%20-%20Documentation)
+Now to go [Lab-6](../Lab%206%20API%20Publishing%20-%20Documentation)

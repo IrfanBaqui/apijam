@@ -138,13 +138,15 @@ An App Developer can create any number of Apps.  Each App can register for any n
 
 3. Populate the following fields
 
-    * Name: **{your_initials}_app**
+    * **App Details** Section
+    
+        * Name: **{your_initials}_app**
 
-    * Display Name: **{your_initials}_app**
+        * Display Name: **{your_initials}_app**
 
-    * Developer: Select the **developer** radio button then select the developer you created from the pulldown
+        * Developer: Select the **developer** radio button then select the developer you created from the pulldown
 
-    * Credentials: Click **Add a credential**
+    * **Credentials** Section
 
         * Expiry: **Never**
 
@@ -238,4 +240,4 @@ In this lab you learned how to protect your API Proxy using the Verify API Key p
 
 How did you like this lab? Rate [here](https://goo.gl/forms/XxDqVtWHnyFdEChv1).
 
-Now go to [Lab-5](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%205%20Traffic%20Management%20-%20Rate%20Limit%20APIs)
+Now go to [Lab-5](../Lab%205%20Traffic%20Management%20-%20Rate%20Limit%20APIs)

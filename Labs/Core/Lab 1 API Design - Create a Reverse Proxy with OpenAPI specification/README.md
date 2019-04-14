@@ -97,19 +97,15 @@ In this lab, we will see how to create a reverse proxy, that routes inbound requ
 
 ![image alt text](./media/image_13.jpg)
 
-11. Go with the **default Permissions** configuration.
-
-![image alt text](./media/image_13a.png)
-
-12. Ensure that only the **test** environment is selected to deploy to and click **Build and Deploy**
+11. Ensure that only the **test** environment is selected to deploy to and click **Build and Deploy**
 
 ![image alt text](./media/image_14.jpg)
 
-13. Once the API proxy is built and deployed **click** the link to view your proxy in the proxy editor.
+12. Once the API proxy is built and deployed **click** the link to view your proxy in the proxy editor.
 
 ![image alt text](./media/image_15.png)
 
-14. *Congratulations!* ...You have now built a reverse proxy for an existing backend service. You should see the proxy **Overview** screen.
+13. *Congratulations!* ...You have now built a reverse proxy for an existing backend service. You should see the proxy **Overview** screen.
 
 ![image alt text](./media/image_16.png)
 
@@ -167,4 +163,4 @@ That completes this hands-on lesson. In this simple lab you learned how to creat
 
 How did you like this lab? Rate [here](https://goo.gl/forms/G8LAPkDWVNncR9iw2).
 
-Now go to [Lab-2](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%202%20Traffic%20Management%20-%20Throttle%20APIs)
+Now go to [Lab-2](../Lab%202%20Traffic%20Management%20-%20Throttle%20APIs)

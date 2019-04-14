@@ -40,7 +40,11 @@ In this lab, you will create a custom report to provide insight into the consump
 
 ![image alt text](./media/image_1.png)
 
-2. Enter the **Report Name** and **Report Description**.
+2. Enter some **Report Name** and **Report Description**.
+
+* **Report Name**: **{your_initials}_Traffic By Proxy Request Path**
+
+* **Report Description**: Custom report to show the sum of traffic by proxy and request path
 
 ![image alt text](./media/image_2.png)
 
@@ -66,17 +70,7 @@ In this lab, you will create a custom report to provide insight into the consump
 
 ![image alt text](./media/image_7.png)
 
-9. You can further narrow the data displayed by adding filters to your report definition. 
-In the **Filter** section of the page, click **+Filter Condition**. 
-Select **Proxy** as the entity you want to filter on, select **=** as the **Operator** and set the **Value** to your API Proxy name (e.g. "ap_employees").
-
-![image alt text](./media/image_8.png)
-
-10. Click on the check button under Actions to save this filter.
-
-![image alt text](./media/image_9.png)
-
-11. Click **Save**. 
+9. Click **Save**. 
 
 *Note: Data delay interval - After API calls are made to proxies, it takes about **10-15 minutes** for the data to appear in dashboards, custom reports, and management API calls.*
 
