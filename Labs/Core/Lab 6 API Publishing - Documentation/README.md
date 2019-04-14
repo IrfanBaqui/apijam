@@ -78,7 +78,7 @@ For this lab, you will need…
 
 * Choose **External Image** from the dropdown
 
-* Copy / paste in the following image url: [https://storage.googleapis.com/temp_cust_assets/employees.png](https://storage.googleapis.com/temp_cust_assets/employees.png)
+* Copy / paste in the following image url: [https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Core/Lab%206%20API%20Publishing%20-%20Documentation/media/employees.png](https://raw.githubusercontent.com/Enzyme3/apijam/master/Labs/Core/Lab%206%20API%20Publishing%20-%20Documentation/media/employees.png)
 
 * Click **Add**
 
