@@ -139,4 +139,4 @@ You’ve learned how to do the following;
 
 How did you link this lab? Rate [here](https://goo.gl/forms/j33WG2U0NFf02QHi1).
 
-Now go to [Lab-7](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%207%20Consume%20APIs)
+Now go to [Lab-7](../Lab%207%20Consume%20APIs)

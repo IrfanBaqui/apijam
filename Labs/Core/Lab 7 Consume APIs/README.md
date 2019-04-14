@@ -124,4 +124,4 @@ That completes this hands-on lesson. In this simple lab you learned how to self 
 
 How did you like this lab? Rate [here](https://goo.gl/forms/H4qE5nLy36yWjj642).
 
-Now go to [Lab-8](https://github.com/Enzyme3/apijam/tree/master/Labs/Core/Lab%208%20API%20Analytics%20-%20Custom%20Reports)
+Now go to [Lab-8](../Lab%208%20API%20Analytics%20-%20Custom%20Reports)
