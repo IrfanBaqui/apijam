@@ -138,13 +138,15 @@ An App Developer can create any number of Apps.  Each App can register for any n
 
 3. Populate the following fields
 
-    * Name: **{your_initials}_app**
+    * **App Details** Section
+    
+        * Name: **{your_initials}_app**
 
-    * Display Name: **{your_initials}_app**
+        * Display Name: **{your_initials}_app**
 
-    * Developer: Select the **developer** radio button then select the developer you created from the pulldown
+        * Developer: Select the **developer** radio button then select the developer you created from the pulldown
 
-    * Credentials: Click **Add a credential**
+    * **Credentials** Section
 
         * Expiry: **Never**
 

@@ -74,6 +74,18 @@ For this lab, you will need…
 
 ![image alt text](./media/image_7.png)
 
+6. **[Optional]** Add an image by clicking **Select** 
+
+* Choose **External Image** from the dropdown
+
+* Copy / paste in the following image url: [https://storage.googleapis.com/temp_cust_assets/employees.png](https://storage.googleapis.com/temp_cust_assets/employees.png)
+
+* Click **Add**
+
+![image alt text](./media/image_7a.png)
+
+![image alt text](./media/image_7b.png)
+
 6. Review selections and click **Finish** to publish the API product (and OpenAPI Specification Snapshot) to the Developer Portal
 
 ![image alt text](./media/image_8.png)

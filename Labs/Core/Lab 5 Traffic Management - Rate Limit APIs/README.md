@@ -46,7 +46,7 @@ Note: As you will have already completed the *API Security - Securing APIs with 
 
     ![image alt text](./media/image_0.png)
 
-5. Create 2 new API Products that include this proxy, ‘**{your_initials}_Employees Bronze Product**’ and ‘**{your_initials}_Employees Platinum Product**’
+5. Create 2 new API Products that include this proxy, ‘**{your_initials}_Employees_Bronze_Product**’ and ‘**{your_initials}_Employees_Platinum_Product**’
 
     For both products specify as before:
 
